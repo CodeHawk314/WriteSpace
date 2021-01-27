@@ -6,7 +6,7 @@ import { makeStyles } from "@material-ui/core/styles";
 const useStyles = makeStyles((theme) => ({
   input: {
     width: "100%",
-    height: "calc(70vh - 100px)",
+    minHeight: "calc(70vh - 100px)",
     alignItems: "start",
     fontFamily: "Arial",
     borderStyle: "none",
