@@ -1,6 +1,7 @@
-import React from "react";
+import React, { useState } from "react";
 import { makeStyles } from "@material-ui/core/styles";
 import TypeBox from "./TypeBox";
+import Settings from "./Settings/Settings";
 
 const useStyles = makeStyles((theme) => ({
   typeBox: {
@@ -20,10 +21,16 @@ const useStyles = makeStyles((theme) => ({
 
 function Layout() {
   const classes = useStyles();
+  const [settingsOpen, setSettingsOpen] = useState(true);
+
   return (
     <>
       <div className={classes.container}>
         <TypeBox className={classes.typeBox} />
+        <Settings
+          settingsOpen={settingsOpen}
+          setSettingsOpen={setSettingsOpen}
+        ></Settings>
       </div>
     </>
   );
