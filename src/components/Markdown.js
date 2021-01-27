@@ -2,6 +2,7 @@ import React from "react";
 import ReactMarkdown from "react-markdown";
 import RemarkMathPlugin from "remark-math";
 import { BlockMath, InlineMath } from "react-katex";
+import CodeBlock from "./CodeBlock";
 import "katex/dist/katex.min.css";
 
 const _mapProps = (props) => ({
@@ -12,6 +13,7 @@ const _mapProps = (props) => ({
     ...props.renderers,
     math: ({ value }) => <BlockMath>{value}</BlockMath>,
     inlineMath: ({ value }) => <InlineMath>{value}</InlineMath>,
+    code: ({ value }) => <CodeBlock language="js" value={value}></CodeBlock>,
   },
 });
 
