@@ -1,6 +1,7 @@
 import React, { useState, useEffect } from "react";
 import { makeStyles } from "@material-ui/core/styles";
 import TypeBox from "./TypeBox";
+import ToolTray from "./ToolTray";
 
 import Markdown from "./Markdown";
 
@@ -50,6 +51,7 @@ function Layout() {
         <div className={classes.markdownDiv}>
           <Markdown>{writing}</Markdown>
         </div>
+        <ToolTray />
       </div>
     </>
   );
