@@ -6,7 +6,7 @@ const useStyles = makeStyles((theme) => ({
   typeBox: {
     margin: 100,
     marginBottom: "30vh",
-    minHeight: "calc(100vh - 200px)",
+    minHeight: "calc(70vh - 100px)",
     width: "100%",
   },
   container: {

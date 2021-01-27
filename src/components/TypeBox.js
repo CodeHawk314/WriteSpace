@@ -6,14 +6,10 @@ import { makeStyles } from "@material-ui/core/styles";
 const useStyles = makeStyles((theme) => ({
   input: {
     width: "100%",
-    height: "100%",
+    height: "calc(70vh - 100px)",
     alignItems: "start",
     fontFamily: "Arial",
     borderStyle: "none",
-  },
-  textField: {
-    borderStyle: "none",
-    padding: 1,
   },
 }));
 
@@ -21,7 +17,6 @@ function TypeBox(props) {
   const classes = useStyles();
   return (
     <TextField
-      className={classes.textField}
       multiline
       placeholder="Start writing!"
       autoFocus
