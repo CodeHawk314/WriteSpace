@@ -1,4 +1,4 @@
-import React, { useState, useEffect } from "react";
+import React, { useState } from "react";
 import { TextField } from "@material-ui/core";
 
 import { makeStyles } from "@material-ui/core/styles";
@@ -13,18 +13,9 @@ const useStyles = makeStyles((theme) => ({
   },
 }));
 
-function TypeBox(props) {
+function TypeBox({ writing, setWriting, ...props }) {
   const classes = useStyles();
-  const [writing, setWriting] = useState();
   const [saveTimeout, setSaveTimeout] = useState(false);
-
-  // Load data from last session if exists
-  useEffect(() => {
-    const data = localStorage.getItem("currentPad");
-    if (data) {
-      setWriting(data);
-    }
-  }, []);
 
   const onChange = (event) => {
     setWriting(event.target.value);
