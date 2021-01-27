@@ -4,10 +4,10 @@ import TypeBox from "./TypeBox";
 
 const useStyles = makeStyles((theme) => ({
   typeBox: {
-    margin: 100,
+    marginTop: 100,
     marginBottom: "30vh",
     minHeight: "calc(70vh - 100px)",
-    width: "100%",
+    width: "80%",
   },
   container: {
     display: "flex",
