@@ -18,7 +18,7 @@ const CodeBlock = ({ language, value }) => {
           fontSize: "inherit",
         },
       }}
-      children={value}
+      children={value || ""}
     />
   );
 };
