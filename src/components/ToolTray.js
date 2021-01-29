@@ -7,13 +7,13 @@ const useStyles = makeStyles((theme) => ({
     position: "absolute",
     top: 30,
     right: 30,
-    padding: 5,
-    borderRadius: "50%",
-    backgroundColor: theme.palette.common.lightGray,
+    padding: 3,
+    borderRadius: "9999px",
+    // backgroundColor: theme.palette.common.lightGray,
   },
 }));
 
-function ToolTray({ settings, setSettings, ...props }) {
+function ToolTray({ writing, setWriting, settings, setSettings, ...props }) {
   const classes = useStyles();
 
   return (

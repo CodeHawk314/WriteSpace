@@ -86,8 +86,13 @@ function Layout() {
               </div>
             </>
           )}
-          <ToolTray settings={settings} setSettings={setSettings} />
         </div>
+        <ToolTray
+          writing={writing}
+          setWriting={setWriting}
+          settings={settings}
+          setSettings={setSettings}
+        />
       </div>
     </>
   );

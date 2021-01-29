@@ -14,7 +14,12 @@ import {
 } from "@material-ui/core";
 import { Column } from "simple-flexbox";
 
-const useStyles = makeStyles((theme) => ({}));
+const useStyles = makeStyles((theme) => ({
+  button: {
+    backgroundColor: theme.palette.common.lightestGray,
+    margin: 3,
+  },
+}));
 
 function Settings({ settings, setSettings }) {
   const classes = useStyles();
@@ -39,7 +44,7 @@ function Settings({ settings, setSettings }) {
 
   return (
     <>
-      <IconButton onClick={onSettingsButtonClick}>
+      <IconButton onClick={onSettingsButtonClick} className={classes.button}>
         <SettingsIcon />
       </IconButton>
       <Dialog open={settingsOpen}>
