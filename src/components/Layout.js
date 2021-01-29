@@ -4,6 +4,7 @@ import TypeBox from "./TypeBox";
 import ToolTray from "./ToolTray";
 
 import Markdown from "./Markdown";
+import Print from "./Print";
 
 const useStyles = makeStyles((theme) => ({
   container: {
@@ -82,17 +83,14 @@ function Layout() {
             className={`${classes.typeBox} hidePrint`}
             id="typebox"
           />
-          {classes.showOutput && (
-            <div className={`${classes.divider} hidePrint`} id="divider" />
+          {settings.showOutput && (
+            <>
+              <div className={`${classes.divider} hidePrint`} id="divider" />
+              <div className={classes.markdownDiv} id="markdownOutput">
+                <Markdown>{writing}</Markdown>
+              </div>
+            </>
           )}
-          <div
-            className={`${classes.markdownDiv} ${
-              !settings.showOutput && classes.hide
-            }`}
-            id="markdownOutput"
-          >
-            <Markdown>{writing}</Markdown>
-          </div>
         </div>
         <ToolTray
           writing={writing}
@@ -100,6 +98,7 @@ function Layout() {
           settings={settings}
           setSettings={setSettings}
         />
+        <Print settings={settings} setSettings={setSettings} />
       </div>
     </>
   );
