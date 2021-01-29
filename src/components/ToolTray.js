@@ -18,7 +18,7 @@ function ToolTray({ writing, setWriting, settings, setSettings, ...props }) {
   const classes = useStyles();
 
   return (
-    <div className={classes.tray}>
+    <div className={`${classes.tray} hidePrint`} id="tooltray">
       <Download writing={writing} />
       <Settings settings={settings} setSettings={setSettings} />
     </div>

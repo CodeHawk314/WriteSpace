@@ -53,6 +53,9 @@ const useStyles = makeStyles((theme) => ({
     borderRadius: 1,
     backgroundColor: theme.palette.common.lightGray,
   },
+  hide: {
+    display: "none",
+  },
 }));
 
 function Layout() {
@@ -76,16 +79,20 @@ function Layout() {
           <TypeBox
             writing={writing}
             setWriting={setWriting}
-            className={classes.typeBox}
+            className={`${classes.typeBox} hidePrint`}
+            id="typebox"
           />
-          {settings.showOutput && (
-            <>
-              <div className={classes.divider} />
-              <div className={classes.markdownDiv}>
-                <Markdown>{writing}</Markdown>
-              </div>
-            </>
+          {classes.showOutput && (
+            <div className={`${classes.divider} hidePrint`} id="divider" />
           )}
+          <div
+            className={`${classes.markdownDiv} ${
+              !settings.showOutput && classes.hide
+            }`}
+            id="markdownOutput"
+          >
+            <Markdown>{writing}</Markdown>
+          </div>
         </div>
         <ToolTray
           writing={writing}
