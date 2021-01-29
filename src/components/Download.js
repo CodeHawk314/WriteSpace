@@ -2,7 +2,14 @@ import React from "react";
 import { makeStyles } from "@material-ui/core/styles";
 import GetAppIcon from "@material-ui/icons/GetApp";
 import { IconButton } from "@material-ui/core";
-import { Column } from "simple-flexbox";
+
+import Markdown from "./Markdown";
+import { renderToString } from "react-dom/server";
+
+import htmlToPDFMake from "html-to-pdfmake";
+import pdfMake from "pdfmake/build/pdfmake";
+import pdfFonts from "pdfmake/build/vfs_fonts";
+pdfMake.vfs = pdfFonts.pdfMake.vfs;
 
 const useStyles = makeStyles((theme) => ({
   button: {
@@ -27,9 +34,18 @@ function Download({ writing }) {
     document.body.removeChild(element);
   };
 
+  const generatePDF = (markdownInput) => {
+    var val = htmlToPDFMake(
+      renderToString(<Markdown>{markdownInput}</Markdown>)
+    );
+    var dd = { content: val, pageSize: "LETTER", pageMargins: [72, 72] };
+    console.log(dd);
+    pdfMake.createPdf(dd).open(); // .download()
+  };
+
   const onDownloadButtonClick = () => {
-    console.log("download pls");
-    download("download.txt", writing);
+    generatePDF(writing);
+    // download("download.txt", writing);
   };
 
   return (
