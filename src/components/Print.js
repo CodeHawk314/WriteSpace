@@ -1,12 +1,40 @@
 function Print({ settings, setSettings }) {
-  var beforePrint = function () {
+  const beforePrint = () => {
     if (window.aaa == null) {
       window.aaa = settings.showOutput;
+      window.aaa === false && setSettings({ ...settings, showOutput: true });
+
+      document.getElementsByClassName("typebox")[0]?.classList.add("hidePrint");
+
+      document.getElementById(
+        "textFieldCopy"
+      ).innerHTML = settings.printRendered
+        ? null
+        : document
+            .getElementById("textField")
+            .innerHTML.replace(/\n/g, "<br />");
+
+      !settings.showOutput &&
+        document.getElementById("markdownOutput")?.classList.add("hide");
+
+      document
+        .getElementById("markdownOutput")
+        ?.classList.add(settings.printRendered ? "showPrint" : "hidePrint");
     }
-    window.aaa === false && setSettings({ showOutput: true });
   };
-  var afterPrint = function () {
-    window.aaa === false && setSettings({ showOutput: false });
+
+  const afterPrint = () => {
+    document
+      .getElementsByClassName("typebox")[0]
+      ?.classList.remove("hidePrint");
+
+    document
+      .getElementById("markdownOutput")
+      ?.classList.remove("showPrint", "hidePrint", "hide");
+
+    document.getElementById("textFieldCopy").innerHTML = null;
+
+    window.aaa === false && setSettings({ ...settings, showOutput: false });
     delete window.aaa;
   };
 

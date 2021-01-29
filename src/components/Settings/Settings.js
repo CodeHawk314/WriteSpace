@@ -37,6 +37,10 @@ function Settings({ settings, setSettings }) {
     setSettings({ ...settings, showOutput: e.target.checked });
   };
 
+  const onSettingsPrintRenderedChange = (e) => {
+    setSettings({ ...settings, printRendered: e.target.checked });
+  };
+
   // Save all settings changes to localstorage
   useEffect(() => {
     localStorage.setItem("settings", JSON.stringify(settings));
@@ -63,6 +67,17 @@ function Settings({ settings, setSettings }) {
                   />
                 }
                 label="Show Live Rendered Output"
+              />
+              <FormControlLabel
+                control={
+                  <Checkbox
+                    checked={settings.printRendered}
+                    onChange={onSettingsPrintRenderedChange}
+                    name="printRendered"
+                    color="primary"
+                  />
+                }
+                label="Print rendered markdown"
               />
             </FormControl>
           </Column>

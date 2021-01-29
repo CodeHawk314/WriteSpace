@@ -31,18 +31,26 @@ function TypeBox({ writing, setWriting, ...props }) {
   };
 
   return (
-    <TextField
-      value={writing}
-      onChange={onChange}
-      placeholder="Start writing!"
-      multiline
-      autoFocus
-      InputProps={{
-        className: classes.input,
-        disableUnderline: true,
-      }}
-      {...props}
-    />
+    <>
+      <TextField
+        value={writing}
+        onChange={onChange}
+        placeholder="Start writing!"
+        multiline
+        autoFocus
+        InputProps={{
+          className: classes.input,
+          disableUnderline: true,
+        }}
+        {...props}
+        id="textField"
+      />
+      <div
+        id="textFieldCopy"
+        style={{ display: "none" }}
+        className="showPrint"
+      />
+    </>
   );
 }
 

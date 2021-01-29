@@ -62,7 +62,7 @@ const useStyles = makeStyles((theme) => ({
 function Layout() {
   const classes = useStyles();
   const [writing, setWriting] = useState("");
-  const defaultSettings = { showOutput: true };
+  const defaultSettings = { showOutput: true, printRendered: true };
   const [settings, setSettings] = useState(
     JSON.parse(localStorage.getItem("settings")) || defaultSettings
   );
@@ -80,8 +80,7 @@ function Layout() {
           <TypeBox
             writing={writing}
             setWriting={setWriting}
-            className={`${classes.typeBox} hidePrint`}
-            id="typebox"
+            className={`${classes.typeBox} typebox`}
           />
           {settings.showOutput && (
             <>
