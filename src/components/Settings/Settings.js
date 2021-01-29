@@ -8,11 +8,15 @@ import {
   DialogActions,
   Button,
   IconButton,
+  FormControl,
+  FormControlLabel,
+  Checkbox,
 } from "@material-ui/core";
+import { Column } from "simple-flexbox";
 
 const useStyles = makeStyles((theme) => ({}));
 
-function Settings() {
+function Settings({ settings, setSettings }) {
   const classes = useStyles();
   const [settingsOpen, setSettingsOpen] = useState(false);
 
@@ -31,7 +35,24 @@ function Settings() {
       </IconButton>
       <Dialog open={settingsOpen}>
         <DialogTitle>Settings</DialogTitle>
-        <DialogContent>Settings under construction. Hang tight!</DialogContent>
+        <DialogContent>
+          <Column>
+            <p>Settings under construction. Hang tight!</p>
+            <FormControl>
+              <FormControlLabel
+                control={
+                  <Checkbox
+                    checked={settings.showOutput}
+                    // onChange={handleChange}
+                    name="showOutput"
+                    color="primary"
+                  />
+                }
+                label="Show Live Rendered Output"
+              />
+            </FormControl>
+          </Column>
+        </DialogContent>
         <DialogActions>
           <Button onClick={onClose}>Close</Button>
         </DialogActions>

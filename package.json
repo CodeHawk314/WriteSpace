@@ -16,6 +16,7 @@
     "react-scripts": "4.0.1",
     "react-syntax-highlighter": "^15.4.3",
     "remark-math": "^4.0.0",
+    "simple-flexbox": "^2.3.2",
     "web-vitals": "^0.2.4"
   },
   "scripts": {
