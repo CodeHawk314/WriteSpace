@@ -1,6 +1,6 @@
 import React from "react";
 import { makeStyles } from "@material-ui/core/styles";
-import SettingsButton from "./Settings/SettingsButton";
+import Settings from "./Settings/Settings";
 
 const useStyles = makeStyles((theme) => ({
   tray: {
@@ -13,12 +13,12 @@ const useStyles = makeStyles((theme) => ({
   },
 }));
 
-function ToolTray() {
+function ToolTray({ settings, setSettings, ...props }) {
   const classes = useStyles();
 
   return (
     <div className={classes.tray}>
-      <SettingsButton />
+      <Settings settings={settings} setSettings={setSettings} />
     </div>
   );
 }

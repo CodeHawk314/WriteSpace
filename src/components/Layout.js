@@ -31,13 +31,14 @@ const useStyles = makeStyles((theme) => ({
 function Layout() {
   const classes = useStyles();
   const [writing, setWriting] = useState("");
+  const [settings, setSettings] = useState({});
 
   // Load data from last session if exists
   useEffect(() => {
     const data = localStorage.getItem("currentPad");
-    if (data) {
-      setWriting(data);
-    }
+    const settings = localStorage.getItem("settings");
+    data && setWriting(data);
+    settings && setSettings(settings);
   }, []);
 
   return (
@@ -51,7 +52,7 @@ function Layout() {
         <div className={classes.markdownDiv}>
           <Markdown>{writing}</Markdown>
         </div>
-        <ToolTray />
+        <ToolTray settings={settings} setSettings={setSettings} />
       </div>
     </>
   );
