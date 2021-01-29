@@ -31,14 +31,15 @@ const useStyles = makeStyles((theme) => ({
 function Layout() {
   const classes = useStyles();
   const [writing, setWriting] = useState("");
-  const [settings, setSettings] = useState({});
+  const defaultSettings = { showOutput: true };
+  const [settings, setSettings] = useState(
+    JSON.parse(localStorage.getItem("settings")) || defaultSettings
+  );
 
   // Load data from last session if exists
   useEffect(() => {
     const data = localStorage.getItem("currentPad");
-    const settings = localStorage.getItem("settings");
     data && setWriting(data);
-    settings && setSettings(settings);
   }, []);
 
   return (

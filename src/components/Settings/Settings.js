@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React, { useState, useEffect } from "react";
 import { makeStyles } from "@material-ui/core/styles";
 import SettingsIcon from "@material-ui/icons/Settings";
 import {
@@ -28,6 +28,16 @@ function Settings({ settings, setSettings }) {
     setSettingsOpen(true);
   };
 
+  const onSettingsShowOutputChange = (e) => {
+    console.log(e.target.checked);
+    setSettings({ ...settings, showOutput: e.target.checked });
+  };
+
+  // Save all settings changes to localstorage
+  useEffect(() => {
+    localStorage.setItem("settings", JSON.stringify(settings));
+  }, [settings]);
+
   return (
     <>
       <IconButton onClick={onSettingsButtonClick}>
@@ -43,7 +53,7 @@ function Settings({ settings, setSettings }) {
                 control={
                   <Checkbox
                     checked={settings.showOutput}
-                    // onChange={handleChange}
+                    onChange={onSettingsShowOutputChange}
                     name="showOutput"
                     color="primary"
                   />
