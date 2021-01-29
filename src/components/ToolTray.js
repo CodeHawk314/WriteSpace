@@ -1,6 +1,7 @@
 import React from "react";
 import { makeStyles } from "@material-ui/core/styles";
 import Settings from "./Settings/Settings";
+import Download from "./Download";
 
 const useStyles = makeStyles((theme) => ({
   tray: {
@@ -18,6 +19,7 @@ function ToolTray({ writing, setWriting, settings, setSettings, ...props }) {
 
   return (
     <div className={classes.tray}>
+      <Download writing={writing} />
       <Settings settings={settings} setSettings={setSettings} />
     </div>
   );
