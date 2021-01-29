@@ -29,7 +29,6 @@ function Settings({ settings, setSettings }) {
   };
 
   const onSettingsShowOutputChange = (e) => {
-    console.log(e.target.checked);
     setSettings({ ...settings, showOutput: e.target.checked });
   };
 
