@@ -1,4 +1,5 @@
 import React from "react";
+import ReactDOM from "react-dom";
 import { makeStyles } from "@material-ui/core/styles";
 import GetAppIcon from "@material-ui/icons/GetApp";
 import { IconButton } from "@material-ui/core";
@@ -12,6 +13,7 @@ import htmlToPDFMake from "html-to-pdfmake";
 import pdfMake from "pdfmake/build/pdfmake";
 import pdfFonts from "pdfmake/build/vfs_fonts";
 
+import html2canvas from "html2canvas";
 pdfMake.vfs = pdfFonts.pdfMake.vfs;
 
 const useStyles = makeStyles((theme) => ({
@@ -25,16 +27,14 @@ function Download({ writing, settings }) {
   const classes = useStyles();
 
   const download = (filename, text) => {
-    var element = document.createElement("a");
+    let element = document.createElement("a");
     element.setAttribute(
       "href",
       "data:text/plain;charset=utf-8," + encodeURIComponent(text)
     );
     element.setAttribute("download", filename);
     element.style.display = "none";
-    document.body.appendChild(element);
     element.click();
-    document.body.removeChild(element);
   };
 
   const generatePDF = (markdownInput) => {
@@ -66,11 +66,35 @@ function Download({ writing, settings }) {
     return css.join("\n");
   };
 
+  const downloadAsPng = (elem) => {
+    html2canvas(elem, {
+      useCORS: true,
+    }).then(function (canvas) {
+      let temp = document.createElement("a");
+      temp.download = "download.png";
+      temp.href = canvas.toDataURL();
+      temp.click();
+    });
+  };
+
+  const downloadPng = () => {
+    let elem = document.getElementById("hiddenOutput");
+    ReactDOM.render(<Markdown>{writing}</Markdown>, elem, () => {
+      console.log("done rendering");
+      setTimeout(() => {
+        downloadAsPng(elem);
+      }, 300);
+    });
+  };
+
   const onDownloadButtonClick = () => {
     // generatePDF(writing);
     switch (settings.dlFormat) {
       case "txt":
         download("download.txt", writing);
+        break;
+      case "png":
+        downloadPng();
         break;
       case "html":
         const htmlStyled = Juice.inlineContent(

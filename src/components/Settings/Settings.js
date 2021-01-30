@@ -17,12 +17,16 @@ import {
 import { Column } from "simple-flexbox";
 
 const useStyles = makeStyles((theme) => ({
+  dialogContent: {
+    // width: "20em",
+  },
   button: {
     backgroundColor: theme.palette.common.lightestGray,
     margin: 3,
   },
   formLabel: {
     justifyContent: "flex-end",
+    marginLeft: 0,
   },
   select: {
     margin: 5,
@@ -66,9 +70,8 @@ function Settings({ settings, setSettings }) {
       </IconButton>
       <Dialog open={settingsOpen} className={`hidePrint`}>
         <DialogTitle>Settings</DialogTitle>
-        <DialogContent>
+        <DialogContent className={classes.dialogContent}>
           <Column>
-            <p>Settings under construction. Hang tight!</p>
             <FormControl className={classes.form}>
               <FormControlLabel
                 control={
@@ -80,7 +83,7 @@ function Settings({ settings, setSettings }) {
                   />
                 }
                 className={classes.formLabel}
-                label="Show Live Rendered Output"
+                label="Show live rendered output"
                 labelPlacement="start"
               />
               <FormControlLabel
@@ -106,6 +109,7 @@ function Settings({ settings, setSettings }) {
                     className={classes.select}
                   >
                     <MenuItem value={"txt"}>Plain text</MenuItem>
+                    <MenuItem value={"png"}>Image</MenuItem>
                     <MenuItem value={"html"}>HTML</MenuItem>
                   </Select>
                 }

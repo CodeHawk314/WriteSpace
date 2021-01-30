@@ -101,6 +101,10 @@ function Layout() {
           setSettings={setSettings}
         />
         <Print settings={settings} setSettings={setSettings} />
+        <div
+          className={`${classes.markdownDiv} hidePrint`}
+          id="hiddenOutput"
+        ></div>
       </div>
     </>
   );
