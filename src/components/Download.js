@@ -69,6 +69,7 @@ function Download({ writing, settings }) {
   const downloadAsPng = (elem) => {
     html2canvas(elem, {
       useCORS: true,
+      allowTaint: true,
     }).then(function (canvas) {
       let temp = document.createElement("a");
       temp.download = "download.png";
