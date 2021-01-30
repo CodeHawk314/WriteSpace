@@ -11,6 +11,8 @@ import {
   FormControl,
   FormControlLabel,
   Checkbox,
+  Select,
+  MenuItem,
 } from "@material-ui/core";
 import { Column } from "simple-flexbox";
 
@@ -18,6 +20,12 @@ const useStyles = makeStyles((theme) => ({
   button: {
     backgroundColor: theme.palette.common.lightestGray,
     margin: 3,
+  },
+  formLabel: {
+    justifyContent: "flex-end",
+  },
+  select: {
+    marginLeft: 9,
   },
 }));
 
@@ -38,7 +46,7 @@ function Settings({ settings, setSettings }) {
   };
 
   const onSettingsPrintRenderedChange = (e) => {
-    setSettings({ ...settings, printRendered: e.target.checked });
+    setSettings({ ...settings, printRendered: e.target.value });
   };
 
   // Save all settings changes to localstorage
@@ -51,12 +59,12 @@ function Settings({ settings, setSettings }) {
       <IconButton onClick={onSettingsButtonClick} className={classes.button}>
         <SettingsIcon />
       </IconButton>
-      <Dialog open={settingsOpen}>
+      <Dialog open={settingsOpen} className={`hidePrint`}>
         <DialogTitle>Settings</DialogTitle>
         <DialogContent>
           <Column>
             <p>Settings under construction. Hang tight!</p>
-            <FormControl>
+            <FormControl className={classes.form}>
               <FormControlLabel
                 control={
                   <Checkbox
@@ -66,18 +74,24 @@ function Settings({ settings, setSettings }) {
                     color="primary"
                   />
                 }
+                className={classes.formLabel}
                 label="Show Live Rendered Output"
+                labelPlacement="start"
               />
               <FormControlLabel
                 control={
-                  <Checkbox
-                    checked={settings.printRendered}
+                  <Select
+                    value={settings.printRendered}
                     onChange={onSettingsPrintRenderedChange}
-                    name="printRendered"
-                    color="primary"
-                  />
+                    className={classes.select}
+                  >
+                    <MenuItem value={true}>Rendered Markdown</MenuItem>
+                    <MenuItem value={false}>Raw Text</MenuItem>
+                  </Select>
                 }
-                label="Print rendered markdown"
+                className={classes.formLabel}
+                label="Print"
+                labelPlacement="start"
               />
             </FormControl>
           </Column>
