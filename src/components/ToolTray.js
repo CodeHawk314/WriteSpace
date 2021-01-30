@@ -19,7 +19,7 @@ function ToolTray({ writing, setWriting, settings, setSettings, ...props }) {
 
   return (
     <div className={`${classes.tray} hidePrint`} id="tooltray">
-      <Download writing={writing} />
+      <Download writing={writing} settings={settings} />
       <Settings settings={settings} setSettings={setSettings} />
     </div>
   );

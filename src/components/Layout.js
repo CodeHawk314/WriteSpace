@@ -22,8 +22,6 @@ const useStyles = makeStyles((theme) => ({
     width: "100%",
     maxWidth: "80em",
     boxSizing: "border-box",
-    paddingLeft: 5,
-    paddingRight: 5,
     alignItems: "start",
     justifyContent: "center",
   },
@@ -62,7 +60,12 @@ const useStyles = makeStyles((theme) => ({
 function Layout() {
   const classes = useStyles();
   const [writing, setWriting] = useState("");
-  const defaultSettings = { showOutput: true, printRendered: true };
+
+  const defaultSettings = {
+    showOutput: true,
+    printRendered: true,
+    dlFormat: "txt",
+  };
   const [settings, setSettings] = useState(
     JSON.parse(localStorage.getItem("settings")) || defaultSettings
   );

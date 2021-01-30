@@ -25,6 +25,7 @@ const useStyles = makeStyles((theme) => ({
     justifyContent: "flex-end",
   },
   select: {
+    margin: 5,
     marginLeft: 9,
   },
 }));
@@ -47,6 +48,10 @@ function Settings({ settings, setSettings }) {
 
   const onSettingsPrintRenderedChange = (e) => {
     setSettings({ ...settings, printRendered: e.target.value });
+  };
+
+  const onSettingsDlFormatChange = (e) => {
+    setSettings({ ...settings, dlFormat: e.target.value });
   };
 
   // Save all settings changes to localstorage
@@ -91,6 +96,21 @@ function Settings({ settings, setSettings }) {
                 }
                 className={classes.formLabel}
                 label="Print"
+                labelPlacement="start"
+              />
+              <FormControlLabel
+                control={
+                  <Select
+                    value={settings.dlFormat}
+                    onChange={onSettingsDlFormatChange}
+                    className={classes.select}
+                  >
+                    <MenuItem value={"txt"}>Plain text</MenuItem>
+                    <MenuItem value={"html"}>HTML</MenuItem>
+                  </Select>
+                }
+                className={classes.formLabel}
+                label="Download Format"
                 labelPlacement="start"
               />
             </FormControl>
