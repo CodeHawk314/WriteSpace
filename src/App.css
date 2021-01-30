@@ -28,7 +28,10 @@ img {
     display: block !important;
   }
 
-  .fullWidth {
-    width: 100%;
+  .leftAlign {
+    position: absolute;
+    left: 0;
+    margin: 10px;
+    padding: 10px;
   }
 }
