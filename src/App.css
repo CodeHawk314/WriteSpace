@@ -27,4 +27,8 @@ img {
     margin: 0 !important;
     display: block !important;
   }
+
+  .fullWidth {
+    width: 100%;
+  }
 }

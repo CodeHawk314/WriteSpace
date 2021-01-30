@@ -48,7 +48,7 @@ function TypeBox({ writing, setWriting, ...props }) {
       <div
         id="textFieldCopy"
         style={{ display: "none" }}
-        className="showPrint"
+        className="showPrint fullWidth"
       />
     </>
   );
