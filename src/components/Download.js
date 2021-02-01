@@ -70,7 +70,13 @@ function Download({ writing, settings }) {
     html2canvas(elem, {
       useCORS: true,
       allowTaint: true,
-    }).then(function (canvas) {
+
+      // Fix output image shifted right bug
+      scrollX: -window.scrollX,
+      scrollY: -window.scrollY,
+      windowWidth: document.documentElement.offsetWidth,
+      windowHeight: document.documentElement.offsetHeight,
+    }).then((canvas) => {
       let temp = document.createElement("a");
       temp.download = "download.png";
       temp.href = canvas.toDataURL();

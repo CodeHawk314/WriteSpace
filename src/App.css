@@ -18,9 +18,10 @@ img {
 
 #hiddenOutput {
   position: absolute;
-  right: -9999px;
+  right: -60em;
   width: auto;
   max-width: 40em;
+  min-width: 0px;
 }
 
 @media print {
