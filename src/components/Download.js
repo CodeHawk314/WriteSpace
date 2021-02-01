@@ -81,9 +81,9 @@ function Download({ writing, settings }) {
   const downloadPng = () => {
     let elem = document.getElementById("hiddenOutput");
     ReactDOM.render(<Markdown>{writing}</Markdown>, elem, () => {
-      console.log("done rendering");
       setTimeout(() => {
         downloadAsPng(elem);
+        ReactDOM.render(null, elem);
       }, 300);
     });
   };
