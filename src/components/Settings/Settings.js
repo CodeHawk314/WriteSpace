@@ -13,6 +13,7 @@ import {
   Checkbox,
   Select,
   MenuItem,
+  Tooltip,
 } from "@material-ui/core";
 import { Column } from "simple-flexbox";
 
@@ -65,9 +66,11 @@ function Settings({ settings, setSettings }) {
 
   return (
     <>
-      <IconButton onClick={onSettingsButtonClick} className={classes.button}>
-        <SettingsIcon />
-      </IconButton>
+      <Tooltip title="Settings" enterDelay={1000} leaveDelay={200}>
+        <IconButton onClick={onSettingsButtonClick} className={classes.button}>
+          <SettingsIcon />
+        </IconButton>
+      </Tooltip>
       <Dialog open={settingsOpen} className={`hidePrint`}>
         <DialogTitle>Settings</DialogTitle>
         <DialogContent className={classes.dialogContent}>

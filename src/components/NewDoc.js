@@ -1,7 +1,7 @@
 import React from "react";
 import { makeStyles } from "@material-ui/core/styles";
 import AddIcon from "@material-ui/icons/Add";
-import { IconButton } from "@material-ui/core";
+import { IconButton, Tooltip } from "@material-ui/core";
 
 const useStyles = makeStyles((theme) => ({
   button: {
@@ -48,11 +48,11 @@ function NewDoc({ writing, setWriting }) {
   };
 
   return (
-    <>
+    <Tooltip title="New" enterDelay={1000} leaveDelay={200}>
       <IconButton onClick={onNewDocButtonClick} className={classes.button}>
         <AddIcon />
       </IconButton>
-    </>
+    </Tooltip>
   );
 }
 

@@ -14,6 +14,7 @@ import {
   Button,
   IconButton,
   Typography,
+  Tooltip,
 } from "@material-ui/core";
 
 const useStyles = makeStyles((theme) => ({
@@ -218,9 +219,11 @@ function Files({ writing, setWriting }) {
         </DialogActions>
       </Dialog>
       {renderDeleteConfirm()}
-      <IconButton onClick={onFilesButtonClick} className={classes.button}>
-        <FolderOutlinedIcon />
-      </IconButton>
+      <Tooltip title="Files" enterDelay={1000} leaveDelay={200}>
+        <IconButton onClick={onFilesButtonClick} className={classes.button}>
+          <FolderOutlinedIcon />
+        </IconButton>
+      </Tooltip>
     </>
   );
 }

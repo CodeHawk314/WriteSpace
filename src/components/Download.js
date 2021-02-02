@@ -2,7 +2,7 @@ import React from "react";
 import ReactDOM from "react-dom";
 import { makeStyles } from "@material-ui/core/styles";
 import GetAppIcon from "@material-ui/icons/GetApp";
-import { IconButton } from "@material-ui/core";
+import { IconButton, Tooltip } from "@material-ui/core";
 
 import Markdown from "./Markdown";
 import { renderToString } from "react-dom/server";
@@ -116,11 +116,11 @@ function Download({ writing, settings }) {
   };
 
   return (
-    <>
+    <Tooltip title="Download" enterDelay={1000} leaveDelay={200}>
       <IconButton onClick={onDownloadButtonClick} className={classes.button}>
         <GetAppIcon />
       </IconButton>
-    </>
+    </Tooltip>
   );
 }
 
