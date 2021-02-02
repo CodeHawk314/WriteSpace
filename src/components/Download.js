@@ -8,13 +8,7 @@ import Markdown from "./Markdown";
 import { renderToString } from "react-dom/server";
 
 import Juice from "juice";
-
-import htmlToPDFMake from "html-to-pdfmake";
-import pdfMake from "pdfmake/build/pdfmake";
-import pdfFonts from "pdfmake/build/vfs_fonts";
-
 import html2canvas from "html2canvas";
-pdfMake.vfs = pdfFonts.pdfMake.vfs;
 
 const useStyles = makeStyles((theme) => ({
   button: {
@@ -35,15 +29,6 @@ function Download({ writing, settings }) {
     element.setAttribute("download", filename);
     element.style.display = "none";
     element.click();
-  };
-
-  const generatePDF = (markdownInput) => {
-    var val = htmlToPDFMake(
-      renderToString(<Markdown>{markdownInput}</Markdown>)
-    );
-    var dd = { content: val, pageSize: "LETTER", pageMargins: [72, 72] };
-    console.log(dd);
-    pdfMake.createPdf(dd).open(); // .download()
   };
 
   const getDocCss = () => {
@@ -95,7 +80,6 @@ function Download({ writing, settings }) {
   };
 
   const onDownloadButtonClick = () => {
-    // generatePDF(writing);
     switch (settings.dlFormat) {
       case "txt":
         download("download.txt", writing);
