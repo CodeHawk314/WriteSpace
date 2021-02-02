@@ -1,14 +1,9 @@
 import React from "react";
-import ReactDOM from "react-dom";
 import { makeStyles } from "@material-ui/core/styles";
 import GetAppIcon from "@material-ui/icons/GetApp";
 import { IconButton, Tooltip } from "@material-ui/core";
 
-import Markdown from "./Markdown";
-import { renderToString } from "react-dom/server";
-
-import Juice from "juice";
-import html2canvas from "html2canvas";
+import { getExported } from "./Export";
 
 const useStyles = makeStyles((theme) => ({
   button: {
@@ -20,83 +15,35 @@ const useStyles = makeStyles((theme) => ({
 function Download({ writing, settings }) {
   const classes = useStyles();
 
-  const download = (filename, text) => {
+  const copyToClipboard = async (blob) => {
+    try {
+      // eslint-disable-next-line no-undef
+      const data = [new ClipboardItem({ [blob.type]: blob })];
+      await navigator.clipboard.write(data);
+    } catch (ReferenceError) {
+      alert(
+        "Sorry, copying images to the clipboard is not supported in your browser."
+      );
+    }
+  };
+
+  const download = (toDownload, ext) => {
     let element = document.createElement("a");
-    element.setAttribute(
-      "href",
-      "data:text/plain;charset=utf-8," + encodeURIComponent(text)
-    );
-    element.setAttribute("download", filename);
+    element.download = "download." + ext;
+    element.href =
+      ext === "png"
+        ? toDownload?.toDataURL()
+        : "data:text/plain;charset=utf-8," + encodeURIComponent(toDownload);
+
     element.style.display = "none";
     element.click();
   };
 
-  const getDocCss = () => {
-    let css = [];
-    for (let sheeti = 0; sheeti < document.styleSheets.length; sheeti++) {
-      let sheet = document.styleSheets[sheeti];
-      let rules = null;
-      try {
-        rules = "cssRules" in sheet ? sheet.cssRules : sheet.rules;
-      } catch {}
-      if (rules) {
-        for (let rulei = 0; rulei < rules.length; rulei++) {
-          let rule = rules[rulei];
-          if ("cssText" in rule) css.push(rule.cssText);
-          else
-            css.push(rule.selectorText + " {\n" + rule.style.cssText + "\n}\n");
-        }
-      }
-    }
-    return css.join("\n");
-  };
-
-  const downloadAsPng = (elem) => {
-    html2canvas(elem, {
-      useCORS: true,
-      allowTaint: true,
-
-      // Fix output image shifted right bug
-      scrollX: -window.scrollX,
-      scrollY: -window.scrollY,
-      windowWidth: document.documentElement.offsetWidth,
-      windowHeight: document.documentElement.offsetHeight,
-    }).then((canvas) => {
-      let temp = document.createElement("a");
-      temp.download = "download.png";
-      temp.href = canvas.toDataURL();
-      temp.click();
-    });
-  };
-
-  const downloadPng = () => {
-    let elem = document.getElementById("hiddenOutput");
-    ReactDOM.render(<Markdown>{writing}</Markdown>, elem, () => {
-      setTimeout(() => {
-        downloadAsPng(elem);
-        ReactDOM.render(null, elem);
-      }, 300);
-    });
-  };
-
   const onDownloadButtonClick = () => {
-    switch (settings.dlFormat) {
-      case "txt":
-        download("download.txt", writing);
-        break;
-      case "png":
-        downloadPng();
-        break;
-      case "html":
-        const htmlStyled = Juice.inlineContent(
-          renderToString(<Markdown>{writing}</Markdown>),
-          getDocCss()
-        );
-        download("download.html", "<!DOCTYPE html>" + htmlStyled);
-        break;
-      default:
-        download("download.txt", writing);
-    }
+    getExported(settings.dlFormat, writing).then((r) => {
+      console.log(typeof r);
+      download(r, settings.dlFormat);
+    });
   };
 
   return (
