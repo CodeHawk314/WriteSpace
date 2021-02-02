@@ -37,6 +37,7 @@ function Download({ writing, settings }) {
     element.click();
   };
 
+  // Doesn't work with math, code blocks, or images :(
   const generatePDF = (markdownInput) => {
     var val = htmlToPDFMake(
       renderToString(<Markdown>{markdownInput}</Markdown>)
@@ -95,7 +96,6 @@ function Download({ writing, settings }) {
   };
 
   const onDownloadButtonClick = () => {
-    // generatePDF(writing);
     switch (settings.dlFormat) {
       case "txt":
         download("download.txt", writing);
@@ -109,6 +109,9 @@ function Download({ writing, settings }) {
           getDocCss()
         );
         download("download.html", "<!DOCTYPE html>" + htmlStyled);
+        break;
+      case "pdf":
+        generatePDF(writing);
         break;
       default:
         download("download.txt", writing);

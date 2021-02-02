@@ -14,6 +14,7 @@ import {
   Select,
   MenuItem,
   Tooltip,
+  Menu,
 } from "@material-ui/core";
 import { Column } from "simple-flexbox";
 
@@ -114,6 +115,7 @@ function Settings({ settings, setSettings }) {
                     <MenuItem value={"txt"}>Plain text</MenuItem>
                     <MenuItem value={"png"}>Image</MenuItem>
                     <MenuItem value={"html"}>HTML</MenuItem>
+                    <MenuItem value={"pdf"}>PDF</MenuItem>
                   </Select>
                 }
                 className={classes.formLabel}
