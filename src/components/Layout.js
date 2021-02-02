@@ -74,6 +74,10 @@ function Layout() {
   useEffect(() => {
     const data = localStorage.getItem("currentPad");
     data && setWriting(data);
+
+    if (!localStorage.getItem("currentPadCreatedOn") || !data) {
+      localStorage.setItem("currentPadCreatedOn", Date.now());
+    }
   }, []);
 
   return (
