@@ -13,6 +13,7 @@ import {
   Divider,
   Button,
   IconButton,
+  Typography,
 } from "@material-ui/core";
 
 const useStyles = makeStyles((theme) => ({
@@ -20,15 +21,29 @@ const useStyles = makeStyles((theme) => ({
     width: "30em",
     position: "relative",
     overflow: "auto",
-    maxHeight: 400,
+    maxHeight: 401,
     padding: 0,
   },
   listItem: {
+    display: "flex",
+    flexDirection: "column",
+    alignItems: "start",
+    justifyContent: "center",
     width: "100%",
-    height: "5em",
+    height: "calc(5em - 1px)",
+    paddingRight: 69,
+    overflow: "hidden",
+    textOverflow: "ellipsis",
     "&$selected": {
       // backgroundColor: theme.palette.primary.light,
     },
+  },
+  listItemHeading: {
+    fontWeight: 500,
+    width: "100%",
+  },
+  listItemText: {
+    width: "100%",
   },
   selected: {},
   button: {
@@ -131,6 +146,39 @@ function Files({ writing, setWriting }) {
     );
   };
 
+  const renderListItem = (file) => {
+    // const regEx = /(?:#{0,6} )?(.+?(?:\n|$))\n*([\s\S]{0,100})[\s\S]*/g; // group 1: first line without heading hashes, group 2: all lines below
+    const regEx = /(?:#{0,6} )?(.+?(?:\n|$))\n*(.*(?:\n|$))[\s\S]*/g; // group 1: first line without heading hashes, group 2: second line
+    const lines = regEx.exec(file.data);
+
+    return (
+      <ListItem
+        button
+        key={file.createdOn}
+        onClick={onFileClick.bind(this, file)}
+        className={classes.listItem}
+        classes={{
+          selected: classes.selected,
+        }}
+        selected={file.createdOn === currentPadCreatedOn}
+      >
+        <Typography noWrap className={classes.listItemHeading}>
+          {lines ? lines[1] : ""}
+        </Typography>
+        <Typography noWrap className={classes.listItemText}>
+          {lines ? lines[2] : ""}
+        </Typography>
+        <ListItemSecondaryAction>
+          <IconButton
+            onClick={setDeleteConfirmCreatedOn.bind(this, file.createdOn)}
+          >
+            <DeleteOutlineIcon />
+          </IconButton>
+        </ListItemSecondaryAction>
+      </ListItem>
+    );
+  };
+
   const renderFileList = () => {
     return (
       <List className={classes.list}>
@@ -142,28 +190,7 @@ function Files({ writing, setWriting }) {
               return (
                 <React.Fragment key={file.createdOn}>
                   <Divider />
-                  <ListItem
-                    button
-                    key={file.createdOn}
-                    onClick={onFileClick.bind(this, file)}
-                    className={classes.listItem}
-                    classes={{
-                      selected: classes.selected,
-                    }}
-                    selected={file.createdOn === currentPadCreatedOn}
-                  >
-                    {file.data}
-                    <ListItemSecondaryAction>
-                      <IconButton
-                        onClick={setDeleteConfirmCreatedOn.bind(
-                          this,
-                          file.createdOn
-                        )}
-                      >
-                        <DeleteOutlineIcon />
-                      </IconButton>
-                    </ListItemSecondaryAction>
-                  </ListItem>
+                  {renderListItem(file)}
                 </React.Fragment>
               );
             })
