@@ -26,7 +26,7 @@ function TypeBox({ writing, setWriting, ...props }) {
       setTimeout(() => {
         localStorage.setItem("currentPad", event.target.value);
         setSaveTimeout(false);
-      }, 3000);
+      }, 1000);
     }
   };
 

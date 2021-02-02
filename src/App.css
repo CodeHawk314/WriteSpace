@@ -17,7 +17,7 @@ img {
 }
 
 #hiddenOutput {
-  position: absolute;
+  position: fixed;
   right: -60em;
   width: auto;
   max-width: 40em;
