@@ -67,16 +67,17 @@ function Files({ writing, setWriting }) {
   };
 
   const onFilesButtonClick = () => {
-    setFiles(JSON.parse(localStorage.getItem("files") || "[]") || []);
-    setCurrentPadCreatedOn(
-      parseInt(localStorage.getItem("currentPadCreatedOn"))
+    const files = JSON.parse(localStorage.getItem("files") || "[]") || [];
+    setFiles(files);
+    const currentPadCreatedOn = parseInt(
+      localStorage.getItem("currentPadCreatedOn")
     );
+    setCurrentPadCreatedOn(currentPadCreatedOn);
+    saveCurrentfile(currentPadCreatedOn, files);
     setFilesDialogOpen(true);
   };
 
-  const onFileClick = (file) => {
-    setFilesDialogOpen(false);
-
+  const saveCurrentfile = (currentPadCreatedOn, files) => {
     let filesTemp = files;
 
     const currentFileIndex = filesTemp.findIndex(
@@ -98,9 +99,14 @@ function Files({ writing, setWriting }) {
         });
       }
     }
+    localStorage.setItem("files", JSON.stringify(filesTemp));
+    setFiles(filesTemp);
+  };
+
+  const onFileClick = (file) => {
+    setFilesDialogOpen(false);
 
     setWriting(file.data);
-    localStorage.setItem("files", JSON.stringify(filesTemp));
     localStorage.setItem("currentPadCreatedOn", file.createdOn);
     localStorage.setItem("currentPad", file.data);
   };
