@@ -30,11 +30,14 @@ const useStyles = makeStyles((theme) => ({
       // backgroundColor: theme.palette.primary.light,
     },
   },
+  selected: {},
   button: {
     backgroundColor: theme.palette.common.lightestGray,
     margin: 3,
   },
-  selected: {},
+  deleteButton: {
+    color: theme.palette.common.red,
+  },
 }));
 
 function Files({ writing, setWriting }) {
@@ -120,7 +123,9 @@ function Files({ writing, setWriting }) {
           <Button onClick={setDeleteConfirmCreatedOn.bind(this, null)}>
             Cancel
           </Button>
-          <Button onClick={deleteFile}>Delete</Button>
+          <Button onClick={deleteFile} className={classes.deleteButton}>
+            Delete
+          </Button>
         </DialogActions>
       </Dialog>
     );
