@@ -65,6 +65,7 @@ function Layout() {
     showOutput: true,
     printRendered: true,
     dlFormat: "txt",
+    copyFormat: "png",
   };
   const [settings, setSettings] = useState(
     JSON.parse(localStorage.getItem("settings")) || defaultSettings

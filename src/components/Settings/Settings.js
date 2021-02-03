@@ -19,7 +19,7 @@ import { Column } from "simple-flexbox";
 
 const useStyles = makeStyles((theme) => ({
   dialogContent: {
-    // width: "20em",
+    width: "18em",
   },
   button: {
     backgroundColor: theme.palette.common.lightestGray,
@@ -57,6 +57,10 @@ function Settings({ settings, setSettings }) {
 
   const onSettingsDlFormatChange = (e) => {
     setSettings({ ...settings, dlFormat: e.target.value });
+  };
+
+  const onSettingsCopyFormatChange = (e) => {
+    setSettings({ ...settings, copyFormat: e.target.value });
   };
 
   // Save all settings changes to localstorage
@@ -118,6 +122,22 @@ function Settings({ settings, setSettings }) {
                 }
                 className={classes.formLabel}
                 label="Download Format"
+                labelPlacement="start"
+              />
+              <FormControlLabel
+                control={
+                  <Select
+                    value={settings.copyFormat}
+                    onChange={onSettingsCopyFormatChange}
+                    className={classes.select}
+                  >
+                    <MenuItem value={"txt"}>Plain text</MenuItem>
+                    <MenuItem value={"png"}>Image</MenuItem>
+                    <MenuItem value={"html"}>HTML</MenuItem>
+                  </Select>
+                }
+                className={classes.formLabel}
+                label="Copy to Clipboard Format"
                 labelPlacement="start"
               />
             </FormControl>
