@@ -50,6 +50,10 @@ function Settings({ settings, setSettings }) {
     setSettings({ ...settings, showOutput: e.target.checked });
   };
 
+  const onSettingsShowTextCountChange = (e) => {
+    setSettings({ ...settings, showTextCount: e.target.checked });
+  };
+
   const onSettingsPrintRenderedChange = (e) => {
     setSettings({ ...settings, printRendered: e.target.value });
   };
@@ -93,6 +97,19 @@ function Settings({ settings, setSettings }) {
             />
             <FormControlLabel
               control={
+                <Checkbox
+                  checked={settings.showTextCount}
+                  onChange={onSettingsShowTextCountChange}
+                  name="showTextCount"
+                  color="primary"
+                />
+              }
+              className={classes.formLabel}
+              label="Show word and char count"
+              labelPlacement="start"
+            />
+            <FormControlLabel
+              control={
                 <Select
                   value={settings.printRendered}
                   onChange={onSettingsPrintRenderedChange}
@@ -119,7 +136,7 @@ function Settings({ settings, setSettings }) {
                 </Select>
               }
               className={classes.formLabel}
-              label="Download Format"
+              label="Download format"
               labelPlacement="start"
             />
             <FormControlLabel
@@ -135,7 +152,7 @@ function Settings({ settings, setSettings }) {
                 </Select>
               }
               className={classes.formLabel}
-              label="Copy to Clipboard Format"
+              label="Copy to clipboard format"
               labelPlacement="start"
             />
           </Column>

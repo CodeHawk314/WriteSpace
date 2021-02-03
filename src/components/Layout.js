@@ -2,6 +2,7 @@ import React, { useState, useEffect } from "react";
 import { makeStyles } from "@material-ui/core/styles";
 import TypeBox from "./TypeBox";
 import ToolTray from "./ToolTray";
+import TextCounter from "./TextCounter";
 
 import Markdown from "./Markdown";
 import Print from "./Print";
@@ -64,6 +65,7 @@ function Layout() {
 
   const defaultSettings = {
     showOutput: true,
+    showTextCount: false,
     printRendered: true,
     dlFormat: "txt",
     copyFormat: "png",
@@ -99,6 +101,10 @@ function Layout() {
               </div>
             </>
           )}
+          <TextCounter
+            writing={writing}
+            open={settings.showTextCount}
+          ></TextCounter>
         </div>
         <ToolTray
           writing={writing}
