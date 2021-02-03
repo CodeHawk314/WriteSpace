@@ -8,3 +8,39 @@ body {
   width: 100%;
   margin: 0;
 }
+
+img {
+  max-width: 100%;
+  max-height: 100vh;
+  page-break-inside: avoid;
+  display: block;
+}
+
+#hiddenOutput {
+  position: fixed;
+  right: -60em;
+  width: auto;
+  max-width: 40em;
+  min-width: 0px;
+}
+
+@media print {
+  .hidePrint {
+    display: none !important;
+  }
+
+  .showPrint * {
+    -webkit-print-color-adjust: exact !important;
+  }
+  .showPrint {
+    margin: 0 !important;
+    display: block !important;
+  }
+
+  .leftAlign {
+    position: absolute;
+    left: 0;
+    margin: 10px;
+    padding: 10px;
+  }
+}
