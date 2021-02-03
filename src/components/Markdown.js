@@ -15,7 +15,7 @@ const _mapProps = ({ settings, ...props }) => ({
       settings.katexBlock ? <BlockMath>{value}</BlockMath> : value,
     inlineMath: ({ value }) =>
       settings.katexInline ? <InlineMath>{value}</InlineMath> : value,
-    code: ({ value }) => <CodeBlock language="js" value={value}></CodeBlock>,
+    code: ({ value }) => <CodeBlock language={null} value={value}></CodeBlock>,
   },
 });
 
