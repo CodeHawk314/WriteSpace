@@ -2,6 +2,7 @@ import React from "react";
 import { makeStyles } from "@material-ui/core/styles";
 import Settings from "./Settings/Settings";
 import Download from "./Download";
+import Copy from "./Copy";
 import NewDoc from "./NewDoc";
 import Files from "./Files";
 
@@ -23,6 +24,7 @@ function ToolTray({ writing, setWriting, settings, setSettings, ...props }) {
     <div className={`${classes.tray} hidePrint`} id="tooltray">
       <NewDoc writing={writing} setWriting={setWriting} />
       <Files writing={writing} setWriting={setWriting} />
+      <Copy writing={writing} settings={settings} />
       <Download writing={writing} settings={settings} />
       <Settings settings={settings} setSettings={setSettings} />
     </div>

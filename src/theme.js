@@ -23,6 +23,7 @@ export default createMuiTheme({
       lightGray: "hsl(0, 0%, 91%)",
       lightestGray: "hsl(0, 0%, 96%)",
       red: "hsl(355, 78%, 46%)",
+      green: "hsl(127, 43%, 59%)",
       black: "black",
       on: "hsl(165, 90%, 60%)",
       off: "hsl(0, 90%, 65%)",
