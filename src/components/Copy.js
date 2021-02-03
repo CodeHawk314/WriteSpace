@@ -1,6 +1,6 @@
 import React, { useState } from "react";
 import { makeStyles } from "@material-ui/core/styles";
-import FileCopyIcon from "@material-ui/icons/FileCopy";
+import FileCopyOutlinedIcon from "@material-ui/icons/FileCopyOutlined";
 import CloseIcon from "@material-ui/icons/Close";
 import { Snackbar, IconButton, Tooltip } from "@material-ui/core";
 
@@ -86,7 +86,7 @@ function Copy({ writing, settings }) {
     <>
       <Tooltip title="Copy" enterDelay={1000} leaveDelay={200}>
         <IconButton onClick={onCopyButtonClick} className={classes.button}>
-          <FileCopyIcon />
+          <FileCopyOutlinedIcon />
         </IconButton>
       </Tooltip>
       <Snackbar

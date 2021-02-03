@@ -1,6 +1,6 @@
 import React from "react";
 import { makeStyles } from "@material-ui/core/styles";
-import GetAppIcon from "@material-ui/icons/GetApp";
+import GetAppOutlinedIcon from "@material-ui/icons/GetAppOutlined";
 import { IconButton, Tooltip } from "@material-ui/core";
 
 import { getExported } from "./Export";
@@ -49,7 +49,7 @@ function Download({ writing, settings }) {
   return (
     <Tooltip title="Download" enterDelay={1000} leaveDelay={200}>
       <IconButton onClick={onDownloadButtonClick} className={classes.button}>
-        <GetAppIcon />
+        <GetAppOutlinedIcon />
       </IconButton>
     </Tooltip>
   );

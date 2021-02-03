@@ -1,6 +1,6 @@
 import React, { useState, useEffect } from "react";
 import { makeStyles } from "@material-ui/core/styles";
-import SettingsIcon from "@material-ui/icons/Settings";
+import SettingsOutlinedIcon from "@material-ui/icons/SettingsOutlined";
 import {
   Dialog,
   DialogTitle,
@@ -72,7 +72,7 @@ function Settings({ settings, setSettings }) {
     <>
       <Tooltip title="Settings" enterDelay={1000} leaveDelay={200}>
         <IconButton onClick={onSettingsButtonClick} className={classes.button}>
-          <SettingsIcon />
+          <SettingsOutlinedIcon />
         </IconButton>
       </Tooltip>
       <Dialog open={settingsOpen} className={`hidePrint`}>
