@@ -73,7 +73,7 @@ function Copy({ writing, settings }) {
   };
 
   const onCopyButtonClick = () => {
-    getExported(settings.copyFormat, writing).then((toCopy) => {
+    getExported(settings.copyFormat, writing, settings).then((toCopy) => {
       copyToClipboard(toCopy, settings.copyFormat);
     });
   };

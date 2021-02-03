@@ -54,6 +54,14 @@ function Settings({ settings, setSettings }) {
     setSettings({ ...settings, showTextCount: e.target.checked });
   };
 
+  const onSettingsKatexInlineChange = (e) => {
+    setSettings({ ...settings, katexInline: e.target.checked });
+  };
+
+  const onSettingsKatexBlockChange = (e) => {
+    setSettings({ ...settings, katexBlock: e.target.checked });
+  };
+
   const onSettingsPrintRenderedChange = (e) => {
     setSettings({ ...settings, printRendered: e.target.value });
   };
@@ -106,6 +114,32 @@ function Settings({ settings, setSettings }) {
               }
               className={classes.formLabel}
               label="Show word and char count"
+              labelPlacement="start"
+            />
+            <FormControlLabel
+              control={
+                <Checkbox
+                  checked={settings.katexInline}
+                  onChange={onSettingsKatexInlineChange}
+                  name="katexInline"
+                  color="primary"
+                />
+              }
+              className={classes.formLabel}
+              label="Inline KaTeX ($)"
+              labelPlacement="start"
+            />
+            <FormControlLabel
+              control={
+                <Checkbox
+                  checked={settings.katexBlock}
+                  onChange={onSettingsKatexBlockChange}
+                  name="katexBlock"
+                  color="primary"
+                />
+              }
+              className={classes.formLabel}
+              label="Block KaTeX ($$)"
               labelPlacement="start"
             />
             <FormControlLabel

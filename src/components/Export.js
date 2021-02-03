@@ -24,10 +24,10 @@ const getDocCss = () => {
   return css.join("\n");
 };
 
-const exportPng = async (writing) => {
+const exportPng = async (rendered) => {
   return new Promise((resolve, reject) => {
     let elem = document.getElementById("hiddenOutput");
-    ReactDOM.render(<Markdown>{writing}</Markdown>, elem, () => {
+    ReactDOM.render(rendered, elem, () => {
       setTimeout(() => {
         html2canvas(elem, {
           useCORS: true,
@@ -47,19 +47,19 @@ const exportPng = async (writing) => {
   });
 };
 
-const getExported = async (format, writing) => {
+const getExported = async (format, writing, settings) => {
   return new Promise((resolve, reject) => {
     switch (format) {
       case "txt":
         resolve(writing);
         break;
       case "png":
-        resolve(exportPng(writing));
+        resolve(exportPng(<Markdown settings={settings}>{writing}</Markdown>));
         break;
       case "html":
         resolve(
           Juice.inlineContent(
-            renderToString(<Markdown>{writing}</Markdown>),
+            renderToString(<Markdown settings={settings}>{writing}</Markdown>),
             getDocCss()
           )
         );

@@ -69,6 +69,8 @@ function Layout() {
     printRendered: true,
     dlFormat: "txt",
     copyFormat: "png",
+    katexInline: false,
+    katexBlock: true,
   };
   const [settings, setSettings] = useState(
     JSON.parse(localStorage.getItem("settings")) || defaultSettings
@@ -97,7 +99,7 @@ function Layout() {
             <>
               <div className={`${classes.divider} hidePrint`} id="divider" />
               <div className={classes.markdownDiv} id="markdownOutput">
-                <Markdown>{writing}</Markdown>
+                <Markdown settings={settings}>{writing}</Markdown>
               </div>
             </>
           )}
