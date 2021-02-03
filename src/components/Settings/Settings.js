@@ -8,7 +8,6 @@ import {
   DialogActions,
   Button,
   IconButton,
-  FormControl,
   FormControlLabel,
   Checkbox,
   Select,
@@ -79,68 +78,66 @@ function Settings({ settings, setSettings }) {
         <DialogTitle>Settings</DialogTitle>
         <DialogContent className={classes.dialogContent}>
           <Column>
-            <FormControl className={classes.form}>
-              <FormControlLabel
-                control={
-                  <Checkbox
-                    checked={settings.showOutput}
-                    onChange={onSettingsShowOutputChange}
-                    name="showOutput"
-                    color="primary"
-                  />
-                }
-                className={classes.formLabel}
-                label="Show live rendered output"
-                labelPlacement="start"
-              />
-              <FormControlLabel
-                control={
-                  <Select
-                    value={settings.printRendered}
-                    onChange={onSettingsPrintRenderedChange}
-                    className={classes.select}
-                  >
-                    <MenuItem value={true}>Rendered Markdown</MenuItem>
-                    <MenuItem value={false}>Raw Text</MenuItem>
-                  </Select>
-                }
-                className={classes.formLabel}
-                label="Print"
-                labelPlacement="start"
-              />
-              <FormControlLabel
-                control={
-                  <Select
-                    value={settings.dlFormat}
-                    onChange={onSettingsDlFormatChange}
-                    className={classes.select}
-                  >
-                    <MenuItem value={"txt"}>Plain text</MenuItem>
-                    <MenuItem value={"png"}>Image</MenuItem>
-                    <MenuItem value={"html"}>HTML</MenuItem>
-                  </Select>
-                }
-                className={classes.formLabel}
-                label="Download Format"
-                labelPlacement="start"
-              />
-              <FormControlLabel
-                control={
-                  <Select
-                    value={settings.copyFormat}
-                    onChange={onSettingsCopyFormatChange}
-                    className={classes.select}
-                  >
-                    <MenuItem value={"txt"}>Plain text</MenuItem>
-                    <MenuItem value={"png"}>Image</MenuItem>
-                    <MenuItem value={"html"}>HTML</MenuItem>
-                  </Select>
-                }
-                className={classes.formLabel}
-                label="Copy to Clipboard Format"
-                labelPlacement="start"
-              />
-            </FormControl>
+            <FormControlLabel
+              control={
+                <Checkbox
+                  checked={settings.showOutput}
+                  onChange={onSettingsShowOutputChange}
+                  name="showOutput"
+                  color="primary"
+                />
+              }
+              className={classes.formLabel}
+              label="Show live rendered output"
+              labelPlacement="start"
+            />
+            <FormControlLabel
+              control={
+                <Select
+                  value={settings.printRendered}
+                  onChange={onSettingsPrintRenderedChange}
+                  className={classes.select}
+                >
+                  <MenuItem value={true}>Rendered Markdown</MenuItem>
+                  <MenuItem value={false}>Raw Text</MenuItem>
+                </Select>
+              }
+              className={classes.formLabel}
+              label="Print"
+              labelPlacement="start"
+            />
+            <FormControlLabel
+              control={
+                <Select
+                  value={settings.dlFormat}
+                  onChange={onSettingsDlFormatChange}
+                  className={classes.select}
+                >
+                  <MenuItem value={"txt"}>Plain text</MenuItem>
+                  <MenuItem value={"png"}>Image</MenuItem>
+                  <MenuItem value={"html"}>HTML</MenuItem>
+                </Select>
+              }
+              className={classes.formLabel}
+              label="Download Format"
+              labelPlacement="start"
+            />
+            <FormControlLabel
+              control={
+                <Select
+                  value={settings.copyFormat}
+                  onChange={onSettingsCopyFormatChange}
+                  className={classes.select}
+                >
+                  <MenuItem value={"txt"}>Plain text</MenuItem>
+                  <MenuItem value={"png"}>Image</MenuItem>
+                  <MenuItem value={"html"}>HTML</MenuItem>
+                </Select>
+              }
+              className={classes.formLabel}
+              label="Copy to Clipboard Format"
+              labelPlacement="start"
+            />
           </Column>
         </DialogContent>
         <DialogActions>
