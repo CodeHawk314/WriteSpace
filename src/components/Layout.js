@@ -33,6 +33,7 @@ const useStyles = makeStyles((theme) => ({
     minHeight: "calc(70vh - 120px)",
     width: "100%",
     minWidth: "20vh",
+    maxWidth: "60em",
   },
   markdownDiv: {
     margin: 10,
