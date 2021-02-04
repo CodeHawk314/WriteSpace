@@ -72,7 +72,7 @@ function Layout() {
     katexInline: false,
     katexBlock: true,
     fontSize: 12,
-    fontFamily: "Helvetica",
+    fontFamily: "Helvetica, sans-serif",
   };
   const [settings, setSettings] = useState(
     JSON.parse(localStorage.getItem("settings")) || defaultSettings

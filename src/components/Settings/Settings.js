@@ -241,6 +241,7 @@ function Settings({ settings, setSettings }) {
                   <MenuItem value={"txt"}>Plain text</MenuItem>
                   <MenuItem value={"png"}>Image</MenuItem>
                   <MenuItem value={"html"}>HTML</MenuItem>
+                  <MenuItem value={"pdf"}>PDF (via print)</MenuItem>
                 </Select>
               }
               className={classes.formLabel}

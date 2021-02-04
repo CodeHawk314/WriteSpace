@@ -28,6 +28,10 @@ function Download({ writing, settings }) {
   };
 
   const onDownloadButtonClick = () => {
+    if (settings.dlFormat === "pdf") {
+      window.print();
+      return;
+    }
     getExported(settings.dlFormat, writing, settings).then((r) => {
       console.log(typeof r);
       download(r, settings.dlFormat);
