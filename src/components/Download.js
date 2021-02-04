@@ -15,18 +15,6 @@ const useStyles = makeStyles((theme) => ({
 function Download({ writing, settings }) {
   const classes = useStyles();
 
-  const copyToClipboard = async (blob) => {
-    try {
-      // eslint-disable-next-line no-undef
-      const data = [new ClipboardItem({ [blob.type]: blob })];
-      await navigator.clipboard.write(data);
-    } catch (ReferenceError) {
-      alert(
-        "Sorry, copying images to the clipboard is not supported in your browser."
-      );
-    }
-  };
-
   const download = (toDownload, ext) => {
     let element = document.createElement("a");
     element.download = "download." + ext;
