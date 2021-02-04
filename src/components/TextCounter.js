@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useState } from "react";
 import { makeStyles } from "@material-ui/core/styles";
 
 const useStyles = makeStyles((theme) => ({
@@ -15,13 +15,19 @@ const useStyles = makeStyles((theme) => ({
 
 function TextCounter({ writing, open }) {
   const classes = useStyles();
+  const [selected, setSelected] = useState();
+
+  document.onselectionchange = function () {
+    setSelected(document.getSelection().toString());
+  };
 
   return (
     <>
       {open && (
         <div className={`${classes.container} hidePrint`}>
-          {writing.match(/(?:\w|['-]+\w)+/g)?.length || 0} words |{" "}
-          {writing.length} chars
+          {selected && "Selected: "}
+          {(selected || writing).match(/(?:\w|['-]+\w)+/g)?.length || 0} words |{" "}
+          {(selected || writing).length} chars
         </div>
       )}
     </>
