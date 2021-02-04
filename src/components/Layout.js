@@ -71,7 +71,6 @@ function Layout() {
     copyFormat: "png",
     katexInline: false,
     katexBlock: true,
-    inlineHtmlStyles: true,
   };
   const [settings, setSettings] = useState(
     JSON.parse(localStorage.getItem("settings")) || defaultSettings

@@ -74,10 +74,6 @@ function Settings({ settings, setSettings }) {
     setSettings({ ...settings, copyFormat: e.target.value });
   };
 
-  const onSettingsInlineHtmlSytlesChange = (e) => {
-    setSettings({ ...settings, inlineHtmlStyles: e.target.checked });
-  };
-
   // Save all settings changes to localstorage
   useEffect(() => {
     localStorage.setItem("settings", JSON.stringify(settings));
@@ -191,19 +187,6 @@ function Settings({ settings, setSettings }) {
               }
               className={classes.formLabel}
               label="Copy to clipboard format"
-              labelPlacement="start"
-            />
-            <FormControlLabel
-              control={
-                <Checkbox
-                  checked={settings.inlineHtmlStyles}
-                  onChange={onSettingsInlineHtmlSytlesChange}
-                  name="inlineHtmlStyles"
-                  color="primary"
-                />
-              }
-              className={classes.formLabel}
-              label="When exporting html embed styles"
               labelPlacement="start"
             />
           </Column>

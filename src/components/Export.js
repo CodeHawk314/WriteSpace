@@ -47,9 +47,9 @@ const exportPng = async (rendered) => {
   });
 };
 
-const exportHtml = (rendered, inlineStyles) => {
+const exportHtml = (rendered) => {
   const html = "<!DOCTYPE html><html>" + renderToString(rendered) + "</html>";
-  return inlineStyles ? Juice.inlineContent(html, getDocCss()) : html;
+  return Juice.inlineContent(html, getDocCss());
 };
 
 const getExported = async (format, writing, settings) => {
@@ -62,12 +62,7 @@ const getExported = async (format, writing, settings) => {
         resolve(exportPng(<Markdown settings={settings}>{writing}</Markdown>));
         break;
       case "html":
-        resolve(
-          exportHtml(
-            <Markdown settings={settings}>{writing}</Markdown>,
-            settings.inlineHtmlStyles
-          )
-        );
+        resolve(exportHtml(<Markdown settings={settings}>{writing}</Markdown>));
         break;
       default:
         resolve(writing);
