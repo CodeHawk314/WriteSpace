@@ -10,6 +10,7 @@ import {
   IconButton,
   FormControlLabel,
   Checkbox,
+  TextField,
   Select,
   MenuItem,
   Tooltip,
@@ -18,7 +19,7 @@ import { Column } from "simple-flexbox";
 
 const useStyles = makeStyles((theme) => ({
   dialogContent: {
-    width: "18em",
+    width: "18rem",
   },
   button: {
     backgroundColor: theme.palette.common.lightestGray,
@@ -29,6 +30,11 @@ const useStyles = makeStyles((theme) => ({
     marginLeft: 0,
   },
   select: {
+    margin: 5,
+    marginLeft: 9,
+  },
+  numberField: {
+    width: "2.8rem",
     margin: 5,
     marginLeft: 9,
   },
@@ -44,6 +50,15 @@ function Settings({ settings, setSettings }) {
 
   const onSettingsButtonClick = () => {
     setSettingsOpen(true);
+  };
+
+  const onSettingsFontSizeChange = (e) => {
+    const val = parseFloat(e.target.value);
+    setSettings({ ...settings, fontSize: val });
+  };
+
+  const onSettingsFontFamilyChange = (e) => {
+    setSettings({ ...settings, fontFamily: e.target.value });
   };
 
   const onSettingsShowOutputChange = (e) => {
@@ -79,6 +94,19 @@ function Settings({ settings, setSettings }) {
     localStorage.setItem("settings", JSON.stringify(settings));
   }, [settings]);
 
+  const fontsList = [
+    ["Helvetica", "Helvetica, sans-serif"],
+    ["Arial", "Arial, sans-serif"],
+    ["Verdana", "Verdana, sans-serif"],
+    ["Tahoma", "Tahoma, sans-serif"],
+    ["Trebuchet MS", "'Trebuchet MS', sans-serif"],
+    ["Times New Roman", "'Times New Roman', serif"],
+    ["Georgia", "Georgia, serif"],
+    ["Garamond", "Garamond, serif"],
+    ["Courier New", "'Courier New', monospace"],
+    ["Brush Script MT", "'Brush Script MT', cursive"],
+  ];
+
   return (
     <>
       <Tooltip title="Settings" enterDelay={1000} leaveDelay={200}>
@@ -90,6 +118,36 @@ function Settings({ settings, setSettings }) {
         <DialogTitle>Settings</DialogTitle>
         <DialogContent className={classes.dialogContent}>
           <Column>
+            <FormControlLabel
+              control={
+                <TextField
+                  type="number"
+                  value={settings.fontSize}
+                  onChange={onSettingsFontSizeChange}
+                  className={classes.numberField}
+                  inputProps={{ min: 1, max: 999 }}
+                />
+              }
+              className={classes.formLabel}
+              label="Font size"
+              labelPlacement="start"
+            />
+            <FormControlLabel
+              control={
+                <Select
+                  value={settings.fontFamily}
+                  onChange={onSettingsFontFamilyChange}
+                  className={classes.select}
+                >
+                  {fontsList.map((font) => {
+                    return <MenuItem value={font[1]}>{font[0]}</MenuItem>;
+                  })}
+                </Select>
+              }
+              className={classes.formLabel}
+              label="Font"
+              labelPlacement="start"
+            />
             <FormControlLabel
               control={
                 <Checkbox

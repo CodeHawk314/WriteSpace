@@ -71,6 +71,8 @@ function Layout() {
     copyFormat: "png",
     katexInline: false,
     katexBlock: true,
+    fontSize: 12,
+    fontFamily: "Helvetica",
   };
   const [settings, setSettings] = useState(
     JSON.parse(localStorage.getItem("settings")) || defaultSettings
@@ -88,7 +90,13 @@ function Layout() {
 
   return (
     <>
-      <div className={classes.container}>
+      <div
+        className={classes.container}
+        style={{
+          fontSize: `${settings.fontSize}pt`,
+          fontFamily: settings.fontFamily,
+        }}
+      >
         <div className={classes.center}>
           <TypeBox
             writing={writing}

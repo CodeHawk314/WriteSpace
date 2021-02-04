@@ -10,6 +10,8 @@ const useStyles = makeStyles((theme) => ({
     borderRadius: 5,
     backgroundColor: theme.palette.common.lightestGray,
     boxShadow: "0px 0px 5px lightgrey",
+    fontFamily: "Roboto",
+    fontSize: "1rem",
   },
 }));
 
