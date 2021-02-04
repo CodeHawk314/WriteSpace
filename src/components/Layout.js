@@ -21,7 +21,7 @@ const useStyles = makeStyles((theme) => ({
     display: "flex",
     flexDirection: "row",
     width: "100%",
-    maxWidth: "80em",
+    maxWidth: "80rem",
     boxSizing: "border-box",
     alignItems: "start",
     justifyContent: "center",
@@ -34,7 +34,7 @@ const useStyles = makeStyles((theme) => ({
     minHeight: "calc(70vh - 120px)",
     width: "100%",
     minWidth: "20vh",
-    maxWidth: "60em",
+    maxWidth: "60rem",
   },
   markdownDiv: {
     margin: 10,
@@ -69,6 +69,10 @@ function Layout() {
     printRendered: true,
     dlFormat: "txt",
     copyFormat: "png",
+    katexInline: false,
+    katexBlock: true,
+    fontSize: 12,
+    fontFamily: "Helvetica, sans-serif",
   };
   const [settings, setSettings] = useState(
     JSON.parse(localStorage.getItem("settings")) || defaultSettings
@@ -86,7 +90,13 @@ function Layout() {
 
   return (
     <>
-      <div className={classes.container}>
+      <div
+        className={classes.container}
+        style={{
+          fontSize: `${settings.fontSize}pt`,
+          fontFamily: settings.fontFamily,
+        }}
+      >
         <div className={classes.center}>
           <TypeBox
             writing={writing}
@@ -97,7 +107,7 @@ function Layout() {
             <>
               <div className={`${classes.divider} hidePrint`} id="divider" />
               <div className={classes.markdownDiv} id="markdownOutput">
-                <Markdown>{writing}</Markdown>
+                <Markdown settings={settings}>{writing}</Markdown>
               </div>
             </>
           )}

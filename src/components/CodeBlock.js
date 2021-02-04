@@ -8,6 +8,7 @@ const CodeBlock = ({ language, value }) => {
       style={github}
       // showLineNumbers
       wrapLongLines
+      language={language}
       customStyle={{
         lineHeight: "1.1",
         fontSize: ".9em",

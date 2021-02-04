@@ -19,11 +19,10 @@ Supports code blocks with syntax highlighting between triple backquotes.
 - Live output rendering
 - Code block syntax highlighting
 - Print rendered output or plain text
-- Download as txt or html
+- Download/copy as txt, image or html
 
 ## Future feature ideas
 
-- Copy output as image to clipboard
 - Save to Google Drive, Box, Dropbox
 
 ## How to run locally

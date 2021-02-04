@@ -41,22 +41,30 @@ function Copy({ writing, settings }) {
               msg: "Copied output picture to the clipboard!",
             });
           } catch (e) {
-            if (e.name === "ReferenceError") {
-              setSnackbar({
-                open: true,
-                success: false,
-                msg:
-                  "Sorry, copying images to the clipboard is not supported in your browser.",
-              });
-              return;
-            } else {
-              throw e;
-            }
+            setSnackbar({
+              open: true,
+              success: false,
+              msg:
+                "Sorry, copying images to the clipboard is not supported in your browser.",
+            });
+            console.error(e);
+            return;
           }
         });
         break;
       default:
-        await navigator.clipboard.writeText(toCopy);
+        try {
+          await navigator.clipboard.writeText(toCopy);
+        } catch (e) {
+          setSnackbar({
+            open: true,
+            success: false,
+            msg:
+              "Sorry, copying to the clipboard is not supported in your browser.",
+          });
+          console.error(e);
+          return;
+        }
         let msg;
         switch (format) {
           case "txt":
@@ -73,7 +81,7 @@ function Copy({ writing, settings }) {
   };
 
   const onCopyButtonClick = () => {
-    getExported(settings.copyFormat, writing).then((toCopy) => {
+    getExported(settings.copyFormat, writing, settings).then((toCopy) => {
       copyToClipboard(toCopy, settings.copyFormat);
     });
   };

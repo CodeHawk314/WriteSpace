@@ -8,7 +8,8 @@ const useStyles = makeStyles((theme) => ({
     width: "100%",
     minHeight: "calc(70vh - 120px)",
     alignItems: "start",
-    fontFamily: "Arial",
+    fontFamily: "inherit",
+    fontSize: "inherit",
     borderStyle: "none",
   },
 }));

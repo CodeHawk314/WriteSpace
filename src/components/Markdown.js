@@ -5,18 +5,22 @@ import { BlockMath, InlineMath } from "react-katex";
 import CodeBlock from "./CodeBlock";
 import "katex/dist/katex.min.css";
 
-const _mapProps = (props) => ({
+const _mapProps = ({ settings, ...props }) => ({
   ...props,
   escapeHtml: false,
   plugins: [RemarkMathPlugin],
   renderers: {
     ...props.renderers,
-    math: ({ value }) => <BlockMath>{value}</BlockMath>,
-    inlineMath: ({ value }) => <InlineMath>{value}</InlineMath>,
-    code: ({ value }) => <CodeBlock language="js" value={value}></CodeBlock>,
+    math: ({ value }) =>
+      settings.katexBlock ? <BlockMath>{value}</BlockMath> : value,
+    inlineMath: ({ value }) =>
+      settings.katexInline ? <InlineMath>{value}</InlineMath> : value,
+    code: ({ value }) => <CodeBlock language={null} value={value}></CodeBlock>,
   },
 });
 
-const Markdown = (props) => <ReactMarkdown {..._mapProps(props)} />;
+const Markdown = ({ settings, ...props }) => (
+  <ReactMarkdown {..._mapProps({ settings, ...props })} />
+);
 
 export default Markdown;
