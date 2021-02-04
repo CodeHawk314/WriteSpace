@@ -47,6 +47,11 @@ const exportPng = async (rendered) => {
   });
 };
 
+const exportHtml = (rendered, inlineStyles) => {
+  const html = "<!DOCTYPE html><html>" + renderToString(rendered) + "</html>";
+  return inlineStyles ? Juice.inlineContent(html, getDocCss()) : html;
+};
+
 const getExported = async (format, writing, settings) => {
   return new Promise((resolve, reject) => {
     switch (format) {
@@ -58,9 +63,9 @@ const getExported = async (format, writing, settings) => {
         break;
       case "html":
         resolve(
-          Juice.inlineContent(
-            renderToString(<Markdown settings={settings}>{writing}</Markdown>),
-            getDocCss()
+          exportHtml(
+            <Markdown settings={settings}>{writing}</Markdown>,
+            settings.inlineHtmlStyles
           )
         );
         break;
