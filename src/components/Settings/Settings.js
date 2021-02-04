@@ -14,12 +14,17 @@ import {
   Select,
   MenuItem,
   Tooltip,
+  Link,
 } from "@material-ui/core";
 import { Column } from "simple-flexbox";
 
 const useStyles = makeStyles((theme) => ({
   dialogContent: {
     width: "18rem",
+  },
+  dialogActions: {
+    justifyContent: "space-between",
+    padding: "8px 16px",
   },
   button: {
     backgroundColor: theme.palette.common.lightestGray,
@@ -37,6 +42,9 @@ const useStyles = makeStyles((theme) => ({
     width: "2.8rem",
     margin: 5,
     marginLeft: 9,
+  },
+  link: {
+    padding: 8,
   },
 }));
 
@@ -140,7 +148,11 @@ function Settings({ settings, setSettings }) {
                   className={classes.select}
                 >
                   {fontsList.map((font) => {
-                    return <MenuItem value={font[1]}>{font[0]}</MenuItem>;
+                    return (
+                      <MenuItem value={font[1]} key={font[0]}>
+                        {font[0]}
+                      </MenuItem>
+                    );
                   })}
                 </Select>
               }
@@ -249,7 +261,10 @@ function Settings({ settings, setSettings }) {
             />
           </Column>
         </DialogContent>
-        <DialogActions>
+        <DialogActions className={classes.dialogActions}>
+          <Link href="/userguide.html" target="_blank" className={classes.link}>
+            User Guide
+          </Link>
           <Button onClick={onClose}>Close</Button>
         </DialogActions>
       </Dialog>

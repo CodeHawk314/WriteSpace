@@ -1,0 +1,373 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <title>User Guide</title>
+  </head>
+  <body style="height: 100%; width: 60em; margin: auto; padding: 20px; font-family: Roboto, sans-serif, sans-serif">
+    <h1>WriteSpace</h1>
+    <p>
+      WriteSpace is a minimalist web notepad with Markdown and KaTeX
+      support. It includes easy options to print the rendered output or export
+      your notes as raw text, image, or html.
+    </p>
+    <p><a href="https://github.com/CodeHawk314/WriteSpace">GitHub</a></p>
+    <h3>Markdown</h3>
+    <p>
+      WriteSpace supports Markdown to easily create headings, bullets, insert
+      images, and more in your notes.
+      <a href="https://www.markdownguide.org/cheat-sheet/">Markdown syntax</a>
+    </p>
+    <p>
+      Check "Show live rendered output" in settings to view the rendered markdown output.
+    </p>
+    <h3>KaTeX</h3>
+    <p>
+      WriteSpace supports KaTeX to allow you to easily write math expressions.
+      <a href="https://katex.org/docs/supported.html">KaTeX syntax</a>
+    </p>
+    <p>
+      To use KaTeX, first make sure it is enabled in settings. Inline KaTeX
+      expressions can be written between
+      <code
+        style="
+          font-family: source-code-pro, Menlo, Monaco, Consolas, 'Courier New',
+            monospace;
+        "
+        >$</code
+      >
+      delimiters. Block KaTeX expressions can be written between
+      <code
+        style="
+          font-family: source-code-pro, Menlo, Monaco, Consolas, 'Courier New',
+            monospace;
+        "
+        >$$</code
+      >
+      delimiters.
+    </p>
+    <p>
+      Inline KaTeX example: $x^2$ -&gt;
+      <span
+        ><span
+          class="katex"
+          style="
+            font: 1.21em / 1.2 KaTeX_Main, 'Times New Roman', serif;
+            text-indent: 0px;
+            text-rendering: auto;
+            border-color: currentcolor;
+          "
+          ><span
+            class="katex-mathml"
+            style="
+              position: absolute;
+              clip: rect(1px, 1px, 1px, 1px);
+              padding: 0px;
+              border: 0px;
+              height: 1px;
+              width: 1px;
+              overflow: hidden;
+            "
+            ><math
+              ><semantics
+                ><mrow
+                  ><msup><mi>x</mi><mn>2</mn></msup></mrow
+                ><annotation encoding="application/x-tex"
+                  >x^2</annotation
+                ></semantics
+              ></math
+            ></span
+          ><span class="katex-html" aria-hidden="true"
+            ><span
+              class="strut"
+              style="display: inline-block; height: 0.8141079999999999em"
+            ></span
+            ><span
+              class="strut bottom"
+              style="
+                display: inline-block;
+                height: 0.8141079999999999em;
+                vertical-align: 0em;
+              "
+            ></span
+            ><span
+              class="base"
+              style="
+                position: relative;
+                white-space: nowrap;
+                width: min-content;
+                display: inline-block;
+              "
+              ><span class="mord"
+                ><span
+                  class="mord mathit"
+                  style="font-family: KaTeX_Main; font-style: italic"
+                  >x</span
+                ><span class="msupsub" style="text-align: left"
+                  ><span
+                    class="vlist-t"
+                    style="
+                      display: inline-table;
+                      table-layout: fixed;
+                      border-collapse: collapse;
+                    "
+                    ><span class="vlist-r" style="display: table-row"
+                      ><span
+                        class="vlist"
+                        style="
+                          display: table-cell;
+                          vertical-align: bottom;
+                          position: relative;
+                          height: 0.8141079999999999em;
+                        "
+                        ><span
+                          style="
+                            display: block;
+                            height: 0px;
+                            position: relative;
+                            top: -3.063em;
+                            margin-right: 0.05em;
+                          "
+                          ><span
+                            class="pstrut"
+                            style="
+                              display: inline-block;
+                              overflow: hidden;
+                              width: 0px;
+                              height: 2.7em;
+                            "
+                          ></span
+                          ><span
+                            class="sizing reset-size6 size3 mtight"
+                            style="display: inline-block; font-size: 0.7em"
+                            ><span class="mord mtight">2</span></span
+                          ></span
+                        ></span
+                      ></span
+                    ></span
+                  ></span
+                ></span
+              ></span
+            ></span
+          ></span
+        ></span
+      >
+    </p>
+    <p>Block KaTeX example:</p>
+    <blockquote><p>$$ </br>e^{i\pi}+1=0</br>$$</p></blockquote>
+    <div>
+      <span
+        class="katex-display"
+        style="display: block; margin: 1em 0px; text-align: center"
+        ><span
+          class="katex"
+          style="
+            font: 1.21em / 1.2 KaTeX_Main, 'Times New Roman', serif;
+            text-indent: 0px;
+            text-rendering: auto;
+            border-color: currentcolor;
+            display: block;
+            text-align: center;
+            white-space: nowrap;
+          "
+          ><span
+            class="katex-mathml"
+            style="
+              position: absolute;
+              clip: rect(1px, 1px, 1px, 1px);
+              padding: 0px;
+              border: 0px;
+              height: 1px;
+              width: 1px;
+              overflow: hidden;
+            "
+            ><math
+              ><semantics
+                ><mrow
+                  ><msup
+                    ><mi>e</mi><mrow><mi>i</mi><mi>π</mi></mrow></msup
+                  ><mo>+</mo><mn>1</mn><mo>=</mo><mn>0</mn></mrow
+                ><annotation encoding="application/x-tex"
+                  >e^{i\pi}+1=0</annotation
+                ></semantics
+              ></math
+            ></span
+          ><span
+            class="katex-html"
+            aria-hidden="true"
+            style="display: block; position: relative"
+            ><span
+              class="strut"
+              style="display: inline-block; height: 0.8746639999999999em"
+            ></span
+            ><span
+              class="strut bottom"
+              style="
+                display: inline-block;
+                height: 0.9579939999999999em;
+                vertical-align: -0.08333em;
+              "
+            ></span
+            ><span
+              class="base"
+              style="
+                position: relative;
+                white-space: nowrap;
+                width: min-content;
+                display: inline-block;
+              "
+              ><span class="mord"
+                ><span
+                  class="mord mathit"
+                  style="font-family: KaTeX_Main; font-style: italic"
+                  >e</span
+                ><span class="msupsub" style="text-align: left"
+                  ><span
+                    class="vlist-t"
+                    style="
+                      display: inline-table;
+                      table-layout: fixed;
+                      border-collapse: collapse;
+                    "
+                    ><span class="vlist-r" style="display: table-row"
+                      ><span
+                        class="vlist"
+                        style="
+                          display: table-cell;
+                          vertical-align: bottom;
+                          position: relative;
+                          height: 0.8746639999999999em;
+                        "
+                        ><span
+                          style="
+                            display: block;
+                            height: 0px;
+                            position: relative;
+                            top: -3.113em;
+                            margin-right: 0.05em;
+                          "
+                          ><span
+                            class="pstrut"
+                            style="
+                              display: inline-block;
+                              overflow: hidden;
+                              width: 0px;
+                              height: 2.7em;
+                            "
+                          ></span
+                          ><span
+                            class="sizing reset-size6 size3 mtight"
+                            style="display: inline-block; font-size: 0.7em"
+                            ><span class="mord mtight"
+                              ><span
+                                class="mord mathit mtight"
+                                style="
+                                  font-family: KaTeX_Main;
+                                  font-style: italic;
+                                "
+                                >i</span
+                              ><span
+                                class="mord mathit mtight"
+                                style="
+                                  font-family: KaTeX_Main;
+                                  font-style: italic;
+                                  margin-right: 0.03588em;
+                                "
+                                >π</span
+                              ></span
+                            ></span
+                          ></span
+                        ></span
+                      ></span
+                    ></span
+                  ></span
+                ></span
+              ><span
+                class="mord rule"
+                style="
+                  min-height: 1px;
+                  display: inline-block;
+                  border: 0px solid;
+                  position: relative;
+                  margin-right: 0.2222222222222222em;
+                "
+              ></span
+              ><span class="mbin">+</span
+              ><span
+                class="mord rule"
+                style="
+                  min-height: 1px;
+                  display: inline-block;
+                  border: 0px solid;
+                  position: relative;
+                  margin-right: 0.2222222222222222em;
+                "
+              ></span
+              ><span class="mord">1</span
+              ><span
+                class="mord rule"
+                style="
+                  min-height: 1px;
+                  display: inline-block;
+                  border: 0px solid;
+                  position: relative;
+                  margin-right: 0.2777777777777778em;
+                "
+              ></span
+              ><span class="mrel">=</span
+              ><span
+                class="mord rule"
+                style="
+                  min-height: 1px;
+                  display: inline-block;
+                  border: 0px solid;
+                  position: relative;
+                  margin-right: 0.2777777777777778em;
+                "
+              ></span
+              ><span class="mord">0</span></span
+            ></span
+          ></span
+        ></span
+      >
+    </div>
+    <h3>Code blocks</h3>
+    <p>
+      WriteSpace supports code blocks with automatic syntax highlighting. Code
+      blocks can be written between
+      <code
+        style="
+          font-family: source-code-pro, Menlo, Monaco, Consolas, 'Courier New',
+            monospace;
+        "
+        >```</code
+      >
+      delimiters. Example:
+    </p>
+    <blockquote><p>```</br>print('hello world!')</br>```</p></blockquote>
+    <pre
+      style="
+        display: block;
+        overflow-x: auto;
+        padding: 0.5em;
+        color: #333;
+        background: #f8f8f8;
+        line-height: 1.1;
+        font-size: 0.9em;
+      "
+    ><code style="font-family: source-code-pro, Menlo, Monaco, Consolas, 'Courier New', monospace; line-height: inherit; font-size: inherit; white-space: pre-wrap;"><span><span class="hljs-function" style="color:#900;font-weight:bold">print</span><span class="hljs-function hljs-params">(</span><span class="hljs-function hljs-params" style="color:#d14">&#x27;hello world!&#x27;</span><span class="hljs-function hljs-params">)</span></span></code></pre>
+    <h3>Word/character counter</h3>
+    <p>
+      To view word and character count, enable "Show word and char
+      count" in settings.
+    </p>
+    <h3>Export options</h3>
+    <p>
+      WriteSpace lets you easily export as raw text, a PNG image, or html. You
+      can export and download via the "download" button in the top
+      right, or export and copy to the clipboard via the "copy" button
+      in the top right. You can also export raw text or the rendered output as a
+      PDF via your browser's print dialog. In settings, you can choose what
+      format you would like to export in for printing, downloading, and copying.
+    </p>
+  </body>
+</html>
