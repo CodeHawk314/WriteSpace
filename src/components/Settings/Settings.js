@@ -149,7 +149,11 @@ function Settings({ settings, setSettings }) {
                 >
                   {fontsList.map((font) => {
                     return (
-                      <MenuItem value={font[1]} key={font[0]}>
+                      <MenuItem
+                        value={font[1]}
+                        key={font[0]}
+                        style={{ fontFamily: font[1] }}
+                      >
                         {font[0]}
                       </MenuItem>
                     );
