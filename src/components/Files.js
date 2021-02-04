@@ -19,7 +19,7 @@ import {
 
 const useStyles = makeStyles((theme) => ({
   list: {
-    width: "30em",
+    width: "30rem",
     position: "relative",
     overflow: "auto",
     maxHeight: 401,

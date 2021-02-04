@@ -21,7 +21,7 @@ const useStyles = makeStyles((theme) => ({
     display: "flex",
     flexDirection: "row",
     width: "100%",
-    maxWidth: "80em",
+    maxWidth: "80rem",
     boxSizing: "border-box",
     alignItems: "start",
     justifyContent: "center",
@@ -34,7 +34,7 @@ const useStyles = makeStyles((theme) => ({
     minHeight: "calc(70vh - 120px)",
     width: "100%",
     minWidth: "20vh",
-    maxWidth: "60em",
+    maxWidth: "60rem",
   },
   markdownDiv: {
     margin: 10,
