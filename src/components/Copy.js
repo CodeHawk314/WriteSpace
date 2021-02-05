@@ -1,5 +1,6 @@
 import React, { useState } from "react";
 import { makeStyles } from "@material-ui/core/styles";
+import ReactGA from "react-ga";
 import FileCopyOutlinedIcon from "@material-ui/icons/FileCopyOutlined";
 import CloseIcon from "@material-ui/icons/Close";
 import { Snackbar, IconButton, Tooltip } from "@material-ui/core";
@@ -83,6 +84,11 @@ function Copy({ writing, settings }) {
   const onCopyButtonClick = () => {
     getExported(settings.copyFormat, writing, settings).then((toCopy) => {
       copyToClipboard(toCopy, settings.copyFormat);
+    });
+    ReactGA.event({
+      category: "Export",
+      action: "Copy",
+      label: settings.copyFormat,
     });
   };
 

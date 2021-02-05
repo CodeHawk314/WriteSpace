@@ -1,5 +1,6 @@
 import React, { useState } from "react";
 import { makeStyles } from "@material-ui/core/styles";
+import ReactGA from "react-ga";
 import FolderOutlinedIcon from "@material-ui/icons/FolderOutlined";
 import DeleteOutlineIcon from "@material-ui/icons/DeleteOutline";
 import {
@@ -76,6 +77,11 @@ function Files({ writing, setWriting }) {
     setCurrentPadCreatedOn(currentPadCreatedOn);
     saveCurrentfile(currentPadCreatedOn, files);
     setFilesDialogOpen(true);
+
+    ReactGA.event({
+      category: "Files",
+      action: "Files dialog opened",
+    });
   };
 
   const saveCurrentfile = (currentPadCreatedOn, files) => {

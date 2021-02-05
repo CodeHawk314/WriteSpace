@@ -1,5 +1,6 @@
 import React from "react";
 import { makeStyles } from "@material-ui/core/styles";
+import ReactGA from "react-ga";
 import GetAppOutlinedIcon from "@material-ui/icons/GetAppOutlined";
 import { IconButton, Tooltip } from "@material-ui/core";
 
@@ -35,6 +36,12 @@ function Download({ writing, settings }) {
     getExported(settings.dlFormat, writing, settings).then((r) => {
       console.log(typeof r);
       download(r, settings.dlFormat);
+    });
+
+    ReactGA.event({
+      category: "Export",
+      action: "Download doc",
+      label: settings.dlFormat,
     });
   };
 
