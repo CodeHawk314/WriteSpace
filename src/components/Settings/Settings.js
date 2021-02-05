@@ -270,7 +270,7 @@ function Settings({ settings, setSettings }) {
           </div>
         </DialogContent>
         <DialogActions className={classes.dialogActions}>
-          <Link href="/userguide.html" target="_blank" className={classes.link}>
+          <Link href="/userguide" target="_blank" className={classes.link}>
             User Guide
           </Link>
           <Button onClick={onClose}>Close</Button>
