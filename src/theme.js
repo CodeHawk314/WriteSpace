@@ -12,10 +12,9 @@ export default createMuiTheme({
   },
   palette: {
     primary: {
-      main: "hsl(205, 90%, 60%)",
-      light: "hsl(204, 94%, 75%)",
-      dark: "hsl(205, 90%, 40%)",
-      darker: "hsl(205, 90%, 30%)",
+      main: "hsl(193, 84%, 44%)",
+      light: "hsl(193, 64%, 74%)",
+      dark: "hsl(193, 94%, 28%)",
     },
     common: {
       white: "white",
