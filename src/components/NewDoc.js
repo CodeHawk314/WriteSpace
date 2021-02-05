@@ -1,5 +1,6 @@
 import React from "react";
 import { makeStyles } from "@material-ui/core/styles";
+import ReactGA from "react-ga";
 import AddIcon from "@material-ui/icons/Add";
 import { IconButton, Tooltip } from "@material-ui/core";
 
@@ -45,6 +46,11 @@ function NewDoc({ writing, setWriting }) {
     localStorage.setItem("currentPad", "");
     localStorage.setItem("currentPadCreatedOn", Date.now());
     setWriting("");
+
+    ReactGA.event({
+      category: "Files",
+      action: "New doc",
+    });
   };
 
   return (

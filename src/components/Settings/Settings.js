@@ -1,5 +1,6 @@
 import React, { useState, useEffect } from "react";
 import { makeStyles } from "@material-ui/core/styles";
+import ReactGA from "react-ga";
 import SettingsOutlinedIcon from "@material-ui/icons/SettingsOutlined";
 import {
   Dialog,
@@ -61,6 +62,11 @@ function Settings({ settings, setSettings }) {
 
   const onSettingsButtonClick = () => {
     setSettingsOpen(true);
+
+    ReactGA.event({
+      category: "Settings",
+      action: "Settings opened",
+    });
   };
 
   const onSettingsFontSizeChange = (e) => {
@@ -98,6 +104,13 @@ function Settings({ settings, setSettings }) {
 
   const onSettingsCopyFormatChange = (e) => {
     setSettings({ ...settings, copyFormat: e.target.value });
+  };
+
+  const onUserGuideOpened = (e) => {
+    ReactGA.event({
+      category: "Settings",
+      action: "User guide opened",
+    });
   };
 
   // Save all settings changes to localstorage
@@ -270,7 +283,12 @@ function Settings({ settings, setSettings }) {
           </div>
         </DialogContent>
         <DialogActions className={classes.dialogActions}>
-          <Link href="/userguide.html" target="_blank" className={classes.link}>
+          <Link
+            href="/userguide"
+            target="_blank"
+            onClick={onUserGuideOpened}
+            className={classes.link}
+          >
             User Guide
           </Link>
           <Button onClick={onClose}>Close</Button>
