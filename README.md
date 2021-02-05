@@ -1,6 +1,6 @@
 # WriteSpace
 
-An ultra-minimalist web Markdown and KaTeX notepad.
+A minimalist web notepad with Markdown and KaTeX support. Use it at [https://writespace.app](https://www.writespace.app).
 
 Supports Markdown. [Markdown syntax](https://www.markdownguide.org/cheat-sheet/).
 
