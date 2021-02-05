@@ -16,9 +16,12 @@ import {
   Tooltip,
   Link,
 } from "@material-ui/core";
-import { Column } from "simple-flexbox";
 
 const useStyles = makeStyles((theme) => ({
+  column: {
+    display: "flex",
+    flexFlow: "column nowrap",
+  },
   dialogContent: {
     width: "18rem",
   },
@@ -125,7 +128,7 @@ function Settings({ settings, setSettings }) {
       <Dialog open={settingsOpen} className={`hidePrint`}>
         <DialogTitle>Settings</DialogTitle>
         <DialogContent className={classes.dialogContent}>
-          <Column>
+          <div className={classes.column}>
             <FormControlLabel
               control={
                 <TextField
@@ -264,7 +267,7 @@ function Settings({ settings, setSettings }) {
               label="Copy to clipboard format"
               labelPlacement="start"
             />
-          </Column>
+          </div>
         </DialogContent>
         <DialogActions className={classes.dialogActions}>
           <Link href="/userguide.html" target="_blank" className={classes.link}>
