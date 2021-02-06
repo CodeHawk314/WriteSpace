@@ -3,6 +3,7 @@ import { makeStyles } from "@material-ui/core/styles";
 import ReactGA from "react-ga";
 import FolderOutlinedIcon from "@material-ui/icons/FolderOutlined";
 import DeleteOutlineIcon from "@material-ui/icons/DeleteOutline";
+import SearchIcon from "@material-ui/icons/Search";
 import {
   Dialog,
   DialogTitle,
@@ -16,6 +17,8 @@ import {
   IconButton,
   Typography,
   Tooltip,
+  TextField,
+  InputAdornment,
 } from "@material-ui/core";
 
 const useStyles = makeStyles((theme) => ({
@@ -55,6 +58,16 @@ const useStyles = makeStyles((theme) => ({
   deleteButton: {
     color: theme.palette.common.red,
   },
+  search: {
+    width: "100%",
+    marginBottom: "1rem",
+  },
+  searchIcon: {
+    color: theme.palette.common.gray,
+  },
+  searchInput: {
+    padding: 8,
+  },
 }));
 
 function Files({ writing, setWriting }) {
@@ -62,6 +75,7 @@ function Files({ writing, setWriting }) {
   const [filesDialogOpen, setFilesDialogOpen] = useState(false);
   const [deleteConfirmCreatedOn, setDeleteConfirmCreatedOn] = useState(null);
   const [currentPadCreatedOn, setCurrentPadCreatedOn] = useState();
+  const [searchTerm, setSearchTerm] = useState("");
   const [files, setFiles] = useState([]);
 
   const onDialogClose = () => {
@@ -71,6 +85,7 @@ function Files({ writing, setWriting }) {
   const onFilesButtonClick = () => {
     const files = JSON.parse(localStorage.getItem("files") || "[]") || [];
     setFiles(files);
+    setSearchTerm("");
     const currentPadCreatedOn = parseInt(
       localStorage.getItem("currentPadCreatedOn")
     );
@@ -179,7 +194,14 @@ function Files({ writing, setWriting }) {
           {lines ? lines[1] : ""}
         </Typography>
         <Typography noWrap className={classes.listItemText}>
-          {lines ? lines[2] : ""}
+          {lines
+            ? searchTerm.length > 0
+              ? lines[0].substr(
+                  lines[0].toLowerCase().indexOf(searchTerm),
+                  lines[0].length
+                )
+              : lines[2]
+            : ""}
         </Typography>
         <ListItemSecondaryAction>
           <IconButton
@@ -193,20 +215,27 @@ function Files({ writing, setWriting }) {
   };
 
   const renderFileList = () => {
+    let filteredFiles = files.filter((file) =>
+      file?.data?.toLowerCase().includes(searchTerm)
+    );
     return (
       <List className={classes.list}>
         {files !== undefined && files.length > 0 ? (
-          files
-            .slice(0)
-            .reverse()
-            .map((file) => {
-              return (
-                <React.Fragment key={file.createdOn}>
-                  <Divider />
-                  {renderListItem(file)}
-                </React.Fragment>
-              );
-            })
+          filteredFiles?.length > 0 ? (
+            filteredFiles
+              .slice(0)
+              .reverse()
+              .map((file) => {
+                return (
+                  <React.Fragment key={file.createdOn}>
+                    <Divider />
+                    {renderListItem(file)}
+                  </React.Fragment>
+                );
+              })
+          ) : (
+            <p>No results</p>
+          )
         ) : (
           <p>You don't have any other saved files</p>
         )}
@@ -219,7 +248,26 @@ function Files({ writing, setWriting }) {
     <>
       <Dialog open={filesDialogOpen}>
         <DialogTitle>Files</DialogTitle>
-        <DialogContent>{renderFileList()}</DialogContent>
+        <DialogContent>
+          <TextField
+            value={searchTerm}
+            onChange={(e) => setSearchTerm(e.target.value.toLowerCase())}
+            className={classes.search}
+            variant="outlined"
+            placeholder="Search"
+            InputProps={{
+              startAdornment: (
+                <InputAdornment position="start" className={classes.searchIcon}>
+                  <SearchIcon />
+                </InputAdornment>
+              ),
+            }}
+            inputProps={{
+              className: classes.searchInput,
+            }}
+          />
+          {renderFileList()}
+        </DialogContent>
         <DialogActions>
           <Button onClick={onDialogClose}>Close</Button>
         </DialogActions>
