@@ -10,7 +10,6 @@ const CodeBlock = ({ language, value }) => {
       wrapLongLines
       language={language}
       customStyle={{
-        lineHeight: "1.1",
         fontSize: ".9em",
       }}
       codeTagProps={{
