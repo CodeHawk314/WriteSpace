@@ -6,6 +6,7 @@ import TextCounter from "./TextCounter";
 
 import Markdown from "./Markdown";
 import Print from "./Print";
+import FirstTime from "./FirstTime";
 
 const useStyles = makeStyles((theme) => ({
   container: {
@@ -38,7 +39,7 @@ const useStyles = makeStyles((theme) => ({
   },
   markdownDiv: {
     margin: 10,
-    marginTop: 100,
+    marginTop: 90,
     marginBottom: 100,
     padding: 10,
     width: "100%",
@@ -122,6 +123,7 @@ function Layout() {
           settings={settings}
           setSettings={setSettings}
         />
+        <FirstTime />
         <Print settings={settings} setSettings={setSettings} />
         <div
           className={`${classes.markdownDiv} hidePrint`}
