@@ -220,7 +220,7 @@ function Files({ writing, setWriting }) {
     );
     return (
       <List className={classes.list}>
-        {files !== undefined && files.length > 0 ? (
+        {files?.length > 0 ? (
           filteredFiles?.length > 0 ? (
             filteredFiles
               .slice(0)
@@ -244,28 +244,34 @@ function Files({ writing, setWriting }) {
     );
   };
 
+  const renderSearchBar = () => {
+    return (
+      <TextField
+        value={searchTerm}
+        onChange={(e) => setSearchTerm(e.target.value.toLowerCase())}
+        className={classes.search}
+        variant="outlined"
+        placeholder="Search"
+        InputProps={{
+          startAdornment: (
+            <InputAdornment position="start" className={classes.searchIcon}>
+              <SearchIcon />
+            </InputAdornment>
+          ),
+        }}
+        inputProps={{
+          className: classes.searchInput,
+        }}
+      />
+    );
+  };
+
   return (
     <>
       <Dialog open={filesDialogOpen}>
         <DialogTitle>Files</DialogTitle>
         <DialogContent>
-          <TextField
-            value={searchTerm}
-            onChange={(e) => setSearchTerm(e.target.value.toLowerCase())}
-            className={classes.search}
-            variant="outlined"
-            placeholder="Search"
-            InputProps={{
-              startAdornment: (
-                <InputAdornment position="start" className={classes.searchIcon}>
-                  <SearchIcon />
-                </InputAdornment>
-              ),
-            }}
-            inputProps={{
-              className: classes.searchInput,
-            }}
-          />
+          {files?.length > 0 && renderSearchBar()}
           {renderFileList()}
         </DialogContent>
         <DialogActions>
