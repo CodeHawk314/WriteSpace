@@ -24,6 +24,10 @@ img {
   min-width: 0px;
 }
 
+#hiddenOutput * .katex .op-symbol.large-op {
+  top: -0.65em !important;
+}
+
 @media print {
   .hidePrint {
     display: none !important;
