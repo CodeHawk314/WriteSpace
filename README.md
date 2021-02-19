@@ -1,3 +1,5 @@
+This is a compiled build to run locally. To use, clone the repo and open build/index.html in your browser.
+
 # WriteSpace
 
 A minimalist web notepad with Markdown and KaTeX support. Use it at [https://writespace.app](https://www.writespace.app).
@@ -20,14 +22,3 @@ Supports code blocks with syntax highlighting between triple backquotes.
 - Code block syntax highlighting
 - Print rendered output or plain text
 - Download/copy as txt, image or html
-
-## Future feature ideas
-
-- Save to Google Drive, Box, Dropbox
-
-## How to run locally
-
-1. Clone repo
-2. cd to directory
-3. npm i _(installs npm packages)_
-4. npm start _(starts development server)_

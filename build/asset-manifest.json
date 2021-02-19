@@ -1,0 +1,19 @@
+{
+  "files": {
+    "main.css": "./static/css/main.389f356b.chunk.css",
+    "main.js": "./static/js/main.f43abf57.chunk.js",
+    "runtime-main.js": "./static/js/runtime-main.753868b0.js",
+    "static/css/2.1126d90e.chunk.css": "./static/css/2.1126d90e.chunk.css",
+    "static/js/2.f4db76fc.chunk.js": "./static/js/2.f4db76fc.chunk.js",
+    "index.html": "./index.html",
+    "static/js/2.f4db76fc.chunk.js.LICENSE.txt": "./static/js/2.f4db76fc.chunk.js.LICENSE.txt",
+    "static/media/katex.min.css": "./static/media/KaTeX_Typewriter-Regular.ea67dc3c.ttf"
+  },
+  "entrypoints": [
+    "static/js/runtime-main.753868b0.js",
+    "static/css/2.1126d90e.chunk.css",
+    "static/js/2.f4db76fc.chunk.js",
+    "static/css/main.389f356b.chunk.css",
+    "static/js/main.f43abf57.chunk.js"
+  ]
+}
